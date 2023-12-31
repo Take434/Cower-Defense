@@ -4813,7 +4813,7 @@ RenderTexture:
   m_TextureSettings:
     serializedVersion: 2
     m_FilterMode: 1
-    m_Aniso: 1
+    m_Aniso: 0
     m_MipBias: 0
     m_WrapU: 1
     m_WrapV: 1
@@ -5419,7 +5419,7 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!21 &1027072754
+--- !u!21 &1108559002
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
@@ -5932,7 +5932,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Enable: 1
-  m_Material: {fileID: 1027072754}
+  m_Material: {fileID: 1108559002}
   m_OutputDisplay: 0
   m_InputLayers:
   - m_LayerName: BaseLayer
