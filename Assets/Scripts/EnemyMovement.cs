@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private Transform[] waypoints = new Transform[15];
-    [SerializeField] private float moveSpeed = 2f;
+    private Transform[] waypoints = new Transform[15];
+    public float moveSpeed = 2f;
+    [SerializeField] private Animator animator;
     private int wayPointIndex = 0;
 
     void Start()
     {
+        waypoints = GameObject.FindGameObjectsWithTag("waypoint").Select(x => x.transform).Reverse().ToArray();
+
         if (waypoints.Length > 0)
         {
             transform.position = waypoints[wayPointIndex].position;
@@ -33,6 +37,8 @@ public class EnemyMovement : MonoBehaviour
             {
                 wayPointIndex++;
             }
+        } else {
+            animator.SetTrigger("playHit");
         }
     }
 }

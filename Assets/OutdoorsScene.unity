@@ -2313,7 +2313,6 @@ GameObject:
   - component: {fileID: 1374807153}
   - component: {fileID: 1374807152}
   - component: {fileID: 1374807151}
-  - component: {fileID: 1374807155}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -36485,7 +36484,7 @@ MonoBehaviour:
   - {fileID: 1197917130}
   - {fileID: 30709964}
   - {fileID: 744647780}
-  moveSpeed: 15
+  moveSpeed: 5
 --- !u!1 &2144533109
 GameObject:
   m_ObjectHideFlags: 0
