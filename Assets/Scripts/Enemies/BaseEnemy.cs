@@ -18,6 +18,7 @@ public class BaseEnemy : MonoBehaviour
   private int wayPointIndex = 0;
   private bool isAttacking = false;
   private float nextAttack = 0f;
+  private FarmManager farmManager;
 
   public void Setup(float moveSpeed, float attackTimeout, float attackDamage, float health, float armor)
   {
@@ -26,6 +27,8 @@ public class BaseEnemy : MonoBehaviour
     this.attackDamage = attackDamage;
     this.health = health;
     this.armor = armor;
+
+    farmManager = GameObject.Find("UI Canvas").GetComponent<FarmManager>();
 
     for(int i = 0; i < waypoints.Length; i++)
     {
@@ -72,5 +75,7 @@ public class BaseEnemy : MonoBehaviour
 
   private void Attack() {
     animator.SetTrigger("playHit");
+
+    farmManager.TakeDamage((int)attackDamage);
   }
 }
