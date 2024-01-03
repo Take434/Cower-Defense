@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 104748720466249381}
   - component: {fileID: 1090074023205983188}
   m_Layer: 0
-  m_Name: CowTowerPrefab
+  m_Name: CowTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

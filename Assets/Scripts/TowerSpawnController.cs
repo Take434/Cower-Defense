@@ -13,19 +13,12 @@ public class TowerSpawnController : MonoBehaviour {
   public GameObject scarecrowTowerPrefab;
 
   void Start() {
-    Button[] gridCells = GameObject.FindGameObjectsWithTag("GridCell").Select(x => x.GetComponent<Button>()).ToArray();
-
-    Debug.Log(gridCells.Length);
-
-    foreach (Button gridCell in gridCells) {
-      gridCell.onClick.AddListener(() => {
-        currentGridCell = gridCell.gameObject;
-        towerSelect.SetActive(true);
-      });
-    }
+    Button[] gridCells = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<GridController>().GridCells
+      .Select(x => x.GridCell.GetComponent<Button>()).ToArray();
   }
 
   public void SpawnTower(GameObject tower) {
+    currentGridCell = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<GridController>().currentGridCell;
     if (currentGridCell != null) {
       GameObject newTower = Instantiate(tower, currentGridCell.transform.position, Quaternion.Euler(90, 0, 0));
       currentGridCell = null;
