@@ -11,7 +11,7 @@ public class EnemySpawn : MonoBehaviour
     float a = 0.5f;
     void Start()
     {
-        possibleEnemies = Resources.LoadAll("prefabs/enemies").Cast<GameObject>().ToList();
+        possibleEnemies = UnityEngine.Resources.LoadAll("prefabs/enemies").Cast<GameObject>().ToList();
     }
 
     // Update is called once per frame
