@@ -10,6 +10,7 @@ public class FarmManager : MonoBehaviour
     public int maxHealth = 250;
     public TextMeshProUGUI dispalyHealth;
     public Image healthBar;
+    public AudioSource dmgSound;
 
     private float step;
     private Sprite[] healthStates;
@@ -26,6 +27,15 @@ public class FarmManager : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health = Mathf.Max(health - damage, 0);
+        if (health == 0)
+        {
+            return;
+        }
+
+        if(damage > 0) {
+            dmgSound.Play();
+            Camera.main.GetComponent<CameraController>().shake = 0.3f;
+        }
         dispalyHealth.text = health.ToString() + " / " + maxHealth.ToString();
         healthBar.sprite = healthStates[Mathf.Clamp(8 - Mathf.CeilToInt(health / step), 0, 8)];
     }
