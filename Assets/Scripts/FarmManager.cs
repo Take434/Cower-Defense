@@ -25,8 +25,8 @@ public class FarmManager : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
+        health = Mathf.Max(health - damage, 0);
         dispalyHealth.text = health.ToString() + " / " + maxHealth.ToString();
-        healthBar.sprite = healthStates[Mathf.Min(8 - Mathf.CeilToInt(health / step), 8)];
+        healthBar.sprite = healthStates[Mathf.Clamp(8 - Mathf.CeilToInt(health / step), 0, 8)];
     }
 }
