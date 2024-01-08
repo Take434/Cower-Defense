@@ -15,6 +15,9 @@ public class GridController : MonoBehaviour {
     foreach (Button gridCell in gridCellGameObjects) {
       gridCell.onClick.AddListener(() => {
         currentGridCell = gridCell.gameObject;
+        if(GetGridCellObject(currentGridCell).IsOccupied) {
+          return;
+        }
         towerSelect.SetActive(true);
       });
     }
@@ -26,5 +29,9 @@ public class GridController : MonoBehaviour {
     }).ToList();
 
     
+  }
+
+  public GridCellObject GetGridCellObject(GameObject gridCell) {
+    return GridCells.Where(x => x.GridCell == gridCell).FirstOrDefault();
   }
 }
