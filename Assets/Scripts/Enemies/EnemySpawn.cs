@@ -20,7 +20,9 @@ public class EnemySpawn : MonoBehaviour
         if(Time.time >= a) {
             GameObject enemyPrefab = possibleEnemies[UnityEngine.Random.Range(0, possibleEnemies.Count)];
             GameObject instance = Instantiate(enemyPrefab, transform.position, Quaternion.Euler(90, 0, 0));
-            a += UnityEngine.Random.Range(10f, 15f);
+            GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<GridController>().enemies.Add(instance);
+            //a += UnityEngine.Random.Range(10f, 15f);
+            a += 1f;
         }
     }
 }

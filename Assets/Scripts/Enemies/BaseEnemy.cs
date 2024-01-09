@@ -9,7 +9,7 @@ public class BaseEnemy : MonoBehaviour
   private float moveSpeed;
   private float attackTimeout;
   private float attackDamage;
-  private float health;
+  public float health;
   private float armor;
 
   //internal
@@ -43,6 +43,11 @@ public class BaseEnemy : MonoBehaviour
 
   protected void Update()
   {
+    if(health <= 0) {
+      GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<GridController>().enemies.Remove(gameObject);
+      Destroy(gameObject);
+    }
+
     if (isAttacking)
     {
       if(Time.time >= nextAttack) {

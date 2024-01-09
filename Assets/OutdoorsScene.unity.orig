@@ -5128,9 +5128,14 @@ GameObject:
   - component: {fileID: 851068323}
   - component: {fileID: 851068322}
   - component: {fileID: 851068321}
+<<<<<<< HEAD
+  m_Layer: 5
+  m_Name: Canvas
+=======
   - component: {fileID: 851068325}
   m_Layer: 5
   m_Name: UI Canvas
+>>>>>>> Tim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5194,7 +5199,11 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
+<<<<<<< HEAD
+  m_AdditionalShaderChannelsFlag: 0
+=======
   m_AdditionalShaderChannelsFlag: 25
+>>>>>>> Tim
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 4
@@ -5213,7 +5222,10 @@ RectTransform:
   m_Children:
   - {fileID: 237109612}
   - {fileID: 1919871716}
+<<<<<<< HEAD
+=======
   - {fileID: 516039239}
+>>>>>>> Tim
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5221,6 +5233,8 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+<<<<<<< HEAD
+=======
 --- !u!114 &851068325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5237,6 +5251,7 @@ MonoBehaviour:
   maxHealth: 250
   dispalyHealth: {fileID: 516039240}
   healthBar: {fileID: 1919871717}
+>>>>>>> Tim
 --- !u!1001 &874742333
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8742,6 +8757,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88adeca11636cf9438bbf3fe331f8afc, type: 3}
+<<<<<<< HEAD
 --- !u!1001 &1454411350
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8846,6 +8862,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+=======
+>>>>>>> Tim
 --- !u!1001 &1461194124
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43837,7 +43855,11 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
+<<<<<<< HEAD
+  m_IsActive: 0
+=======
   m_IsActive: 1
+>>>>>>> Tim
 --- !u!224 &1919871716
 RectTransform:
   m_ObjectHideFlags: 0
@@ -43852,11 +43874,19 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 851068324}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -20, y: -20}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 1, y: 1}
+=======
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 676, y: 229}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+>>>>>>> Tim
 --- !u!114 &1919871717
 MonoBehaviour:
   m_ObjectHideFlags: 0

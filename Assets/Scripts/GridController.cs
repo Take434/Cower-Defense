@@ -8,14 +8,16 @@ public class GridController : MonoBehaviour {
   public List<GridCellObject> GridCells;
   public GameObject currentGridCell;
   public GameObject towerSelect;
+  public List<GameObject> enemies;
 
   void Start() {
     Button[] gridCellGameObjects = GameObject.FindGameObjectsWithTag("GridCell").Select(x => x.GetComponent<Button>()).ToArray();
 
     foreach (Button gridCell in gridCellGameObjects) {
       gridCell.onClick.AddListener(() => {
+        GridCellObject currentGridCellObject = GetGridCellObject(currentGridCell);
         currentGridCell = gridCell.gameObject;
-        if(GetGridCellObject(currentGridCell).IsOccupied) {
+        if(currentGridCellObject.IsOccupied) {
           return;
         }
         towerSelect.SetActive(true);

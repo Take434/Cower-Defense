@@ -43,8 +43,8 @@ public class TowerSpawnController : MonoBehaviour {
   }
 
   public void SpawnCowTower() {
-    Cancel(); 
-    // SpawnTower(CowTowerPrefab);
+    CowTower tower = new CowTower();
+    SpawnTower(CowTowerPrefab, tower);
   }
 
   public void SpawnPigTower() {
