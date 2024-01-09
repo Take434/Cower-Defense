@@ -9,8 +9,10 @@ public class BaseEnemy : MonoBehaviour
   private float moveSpeed;
   private float attackTimeout;
   private float attackDamage;
+  private float maxHealth;
   public float health;
   private float armor;
+  public GameObject healthbar;
 
   //internal
   private Transform[] waypoints = new Transform[15];
@@ -27,6 +29,13 @@ public class BaseEnemy : MonoBehaviour
     this.attackDamage = attackDamage;
     this.health = health;
     this.armor = armor;
+
+    GameObject healthBar = GameObject.CreatePrimitive(PrimitiveType.Cube);
+    healthBar.transform.position = transform.position;
+    healthBar.transform.localScale = new Vector3(0.5f, 0.1f, 0.1f);
+    healthBar.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+
+    this.healthbar = healthBar;
 
     farmManager = GameObject.Find("UI Canvas").GetComponent<FarmManager>();
 
@@ -68,6 +77,8 @@ public class BaseEnemy : MonoBehaviour
       transform.position = Vector3.MoveTowards(transform.position,
         waypoints[wayPointIndex].position,
         moveSpeed * Time.deltaTime);
+
+      this.healthbar.transform.position = transform.position;
 
       if (Vector3.Distance(transform.position, waypoints[wayPointIndex].position) < 0.001f)
       {
