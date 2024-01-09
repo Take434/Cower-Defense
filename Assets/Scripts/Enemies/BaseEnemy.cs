@@ -19,6 +19,7 @@ public class BaseEnemy : MonoBehaviour
   private bool isAttacking = false;
   private float nextAttack = 0f;
   private FarmManager farmManager;
+  private GameState gameState;
 
   public void Setup(float moveSpeed, float attackTimeout, float attackDamage, float health, float armor)
   {
@@ -27,6 +28,8 @@ public class BaseEnemy : MonoBehaviour
     this.attackDamage = attackDamage;
     this.health = health;
     this.armor = armor;
+
+    gameState = GameObject.Find("GameState").GetComponent<GameState>();
 
     farmManager = GameObject.Find("UI Canvas").GetComponent<FarmManager>();
 
@@ -43,6 +46,10 @@ public class BaseEnemy : MonoBehaviour
 
   protected void Update()
   {
+    if(gameState.state == GameStateEnum.GAMEOVER || gameState.state == GameStateEnum.PAUSED) {
+      return;
+    }
+
     if (isAttacking)
     {
       if(Time.time >= nextAttack) {

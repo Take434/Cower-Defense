@@ -8,16 +8,18 @@ using UnityEngine;
 public class EnemySpawn : MonoBehaviour
 {
     private List<GameObject> possibleEnemies;
+    private GameState gameState;
     float a = 0.5f;
     void Start()
     {
         possibleEnemies = UnityEngine.Resources.LoadAll("prefabs/enemies").Cast<GameObject>().ToList();
+        gameState = GameObject.Find("GameState").GetComponent<GameState>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Time.time >= a) {
+        if(Time.time >= a && gameState.state == GameStateEnum.PLAYING) {
             GameObject enemyPrefab = possibleEnemies[UnityEngine.Random.Range(0, possibleEnemies.Count)];
             GameObject instance = Instantiate(enemyPrefab, transform.position, Quaternion.Euler(90, 0, 0));
             a += UnityEngine.Random.Range(10f, 15f);

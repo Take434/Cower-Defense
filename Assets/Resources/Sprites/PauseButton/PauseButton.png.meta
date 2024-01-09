@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4933a4c60e3a0284cb8cc90c36311d12
+guid: 34dfd8dcdf28aa741ac402d53819050c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -81,19 +81,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -123,64 +110,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: startButton
+      name: Paused
       rect:
         serializedVersion: 2
-        x: 1
-        y: 48
+        x: 0
+        y: 43
         width: 53
         height: 41
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7a066fa60e9ca0478d366290d1db899
-      internalID: 535042487
+      spriteID: ef7e1eae5e79f364cb9a07d52b8690ff
+      internalID: -1171883155
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: exitButton
+      name: Playing
       rect:
         serializedVersion: 2
-        x: 65
-        y: 48
+        x: 0
+        y: 0
         width: 53
         height: 41
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d2b7fe7f970a114d8ddd6a3d45ab573
-      internalID: -1389011192
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: settingsButton
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 5
-        width: 53
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2a7b96622d85c11419c127f36aba4e79
-      internalID: -503126268
+      spriteID: 1799d4fa8d5c7b04b937e96a19d5ac95
+      internalID: 163105507
       vertices: []
       indices: 
       edges: []
@@ -188,7 +154,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: b2753098c1241de4eac3a5bc1fc0deb4
     internalID: 0
     vertices: []
     indices: 
@@ -196,9 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      exitButton: -1389011192
-      settingsButton: -503126268
-      startButton: 535042487
+      Paused: -1171883155
+      Playing: 163105507
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

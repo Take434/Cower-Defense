@@ -9,10 +9,12 @@ public class Settings : MonoBehaviour
     private CameraController cam;
     private Color planeColor;
     private Image planeImage;
+    [SerializeField] private GameState gameState;
 
-    public void Awake() {
+    public void Start() {
         cam = Camera.main.GetComponent<CameraController>();
         planeImage = gameObject.GetComponent<Image>();
+
         planeColor = planeImage.color;
         zoomSlider = gameObject.GetComponentInChildren<Slider>();
         zoomSlider.onValueChanged.AddListener(ZoomSliderChanged);
@@ -21,10 +23,12 @@ public class Settings : MonoBehaviour
 
     public void OpenSettings() {
         gameObject.SetActive(true);
+        gameState.Pause();
     }
 
     public void CloseSettings() {
         gameObject.SetActive(false);
+        gameState.Unpause();
     }
 
     public void ZoomSliderChanged(float value) {
