@@ -12,14 +12,17 @@ public class CameraController : MonoBehaviour
 
     private Vector3 lastShake = new Vector3(0, 0, 0);
     private Camera cam;
+    private float originalSize;
 
     [Range(0.0f, 5.0f)]
     [Tooltip("Set the target aspect ratio")]
-    public float zoom;
+    public float zoom = 1.0f;
+
 
     private void Awake() 
     {
         cam = GetComponent<Camera>();
+        originalSize = cam.orthographicSize;
 
         if(Application.isPlaying) {
             ScaleViewport();
@@ -53,29 +56,30 @@ public class CameraController : MonoBehaviour
 
     private void ScaleViewport() 
     {
-        float currentAspect = (float)Screen.width / (float)Screen.height;
-        float scaleHeight = currentAspect / zoom;
+        // float currentAspect = (float)Screen.width / (float)Screen.height;
+        // float scaleHeight = currentAspect / zoom;
 
-        if(scaleHeight < 1.0f) {
-            Rect rect = cam.rect;
+        // if(scaleHeight < 1.0f) {
+        //     Rect rect = cam.rect;
 
-            rect.width = 1.0f;
-            rect.height = scaleHeight;
-            rect.x = 0;
-            rect.y = (1.0f - scaleHeight) / 2.0f;
+        //     rect.width = 1.0f;
+        //     rect.height = scaleHeight;
+        //     rect.x = 0;
+        //     rect.y = (1.0f - scaleHeight) / 2.0f;
 
-            cam.rect = rect;
-        } else {
-            float scaleWidth = 1.0f / scaleHeight;
+        //     cam.rect = rect;
+        // } else {
+        //     float scaleWidth = 1.0f / scaleHeight;
 
-            Rect rect = cam.rect;
+        //     Rect rect = cam.rect;
 
-            rect.width = scaleWidth;
-            rect.height = 1.0f;
-            rect.x = (1.0f - scaleWidth) / 2.0f;
-            rect.y = 0;
+        //     rect.width = scaleWidth;
+        //     rect.height = 1.0f;
+        //     rect.x = (1.0f - scaleWidth) / 2.0f;
+        //     rect.y = 0;
 
-            cam.rect = rect;
-        }
+        //     cam.rect = rect;
+        // }
+        cam.orthographicSize = 14.33f * zoom;
     }
 }
