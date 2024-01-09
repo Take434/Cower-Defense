@@ -15,7 +15,7 @@ public class CameraController : MonoBehaviour
 
     [Range(0.0f, 5.0f)]
     [Tooltip("Set the target aspect ratio")]
-    [SerializeField] private float targetAspect;
+    public float zoom;
 
     private void Awake() 
     {
@@ -45,10 +45,16 @@ public class CameraController : MonoBehaviour
         #endif
     }
 
+    public void Zoom(float value) 
+    {
+        zoom = value;
+        ScaleViewport();
+    }
+
     private void ScaleViewport() 
     {
         float currentAspect = (float)Screen.width / (float)Screen.height;
-        float scaleHeight = currentAspect / targetAspect;
+        float scaleHeight = currentAspect / zoom;
 
         if(scaleHeight < 1.0f) {
             Rect rect = cam.rect;

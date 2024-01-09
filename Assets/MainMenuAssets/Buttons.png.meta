@@ -127,7 +127,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1
-        y: 1
+        y: 45
         width: 53
         height: 41
       alignment: 0
@@ -137,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 12c4ec273adba19449d1a127f0cac0fe
-      internalID: -547187147
+      spriteID: 85649e4a000e8b5429f52f7d5b88e1c6
+      internalID: 535042487
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 65
-        y: 1
+        y: 45
         width: 53
         height: 41
       alignment: 0
@@ -158,8 +158,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 690b0d50f114546469ac29b54f70c60f
-      internalID: -1519809365
+      spriteID: f4460d09bbc54444887e9bcf818e3ca7
+      internalID: -1389011192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: settingsButton
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2
+        width: 53
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 342d9eec114c46944908068c6e782cfc
+      internalID: -503126268
       vertices: []
       indices: 
       edges: []
@@ -175,8 +196,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      exitButton: -1519809365
-      startButton: -547187147
+      exitButton: -1389011192
+      settingsButton: -503126268
+      startButton: 535042487
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
