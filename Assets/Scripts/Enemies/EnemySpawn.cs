@@ -19,10 +19,15 @@ public class EnemySpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Time.time >= a && gameState.state == GameStateEnum.PLAYING) {
+        if(Time.time >= a) {
+            a += UnityEngine.Random.Range(5f, 7f);
+
+            if(GameStateEnum.PLAYING != gameState.state) {
+                return;
+            }
+
             GameObject enemyPrefab = possibleEnemies[UnityEngine.Random.Range(0, possibleEnemies.Count)];
             GameObject instance = Instantiate(enemyPrefab, transform.position, Quaternion.Euler(90, 0, 0));
-            a += UnityEngine.Random.Range(5f, 7f);
         }
     }
 }

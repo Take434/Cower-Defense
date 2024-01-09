@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class GameOverScreen : MonoBehaviour
 {
-    public void Open() {
+    public void Open()
+    {
         gameObject.SetActive(true);
     }
 
-    public void Exit() {
-        gameObject.SetActive(false);
+    public void Restart()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("OutdoorsScene");
     }
 
-
+    public void Quit()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+    }
 }
