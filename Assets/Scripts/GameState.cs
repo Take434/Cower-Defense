@@ -14,6 +14,7 @@ public class GameState : MonoBehaviour
 {
     public GameStateEnum state = GameStateEnum.PAUSED;
     public GameObject pauseButton;
+    public GameOverScreen gameOverScreen;
     private Image pauseButtonSprite;
     private Sprite[] pauseButtonStates;
 
@@ -43,6 +44,6 @@ public class GameState : MonoBehaviour
     public void GameOver()
     {
         state = GameStateEnum.GAMEOVER;
-        Debug.Log("Game Over");
+        gameOverScreen.Open();
     }
 }
