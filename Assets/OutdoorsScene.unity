@@ -5994,7 +5994,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 250
   maxHealth: 250
-  displayHealth: {fileID: 0}
+  displayHealth: {fileID: 516039240}
   healthBar: {fileID: 1919871717}
   dmgSound: {fileID: 851068326}
 --- !u!82 &851068326
