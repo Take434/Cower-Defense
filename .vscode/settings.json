@@ -51,5 +51,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Cower-Defense.sln"
+    "dotnet.defaultSolution": "Cower-Defense.sln",
+    "dotnet.preferCSharpExtension": true
 }

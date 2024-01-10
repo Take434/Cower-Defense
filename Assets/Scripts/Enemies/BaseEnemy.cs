@@ -21,6 +21,7 @@ public class BaseEnemy : MonoBehaviour
   private bool isAttacking = false;
   private float nextAttack = 0f;
   private FarmManager farmManager;
+  private GridController gridController;
 
   public void Setup(float moveSpeed, float attackTimeout, float attackDamage, float health, float armor)
   {
@@ -30,12 +31,7 @@ public class BaseEnemy : MonoBehaviour
     this.health = health;
     this.armor = armor;
 
-    GameObject healthBar = GameObject.CreatePrimitive(PrimitiveType.Cube);
-    healthBar.transform.position = transform.position;
-    healthBar.transform.localScale = new Vector3(0.5f, 0.1f, 0.1f);
-    healthBar.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
-
-    this.healthbar = healthBar;
+    gridController = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<GridController>();
 
     farmManager = GameObject.Find("UI Canvas").GetComponent<FarmManager>();
 
@@ -53,7 +49,7 @@ public class BaseEnemy : MonoBehaviour
   protected void Update()
   {
     if(health <= 0) {
-      GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<GridController>().enemies.Remove(gameObject);
+      gridController.enemies.Remove(gameObject);
       Destroy(gameObject);
     }
 
@@ -77,8 +73,6 @@ public class BaseEnemy : MonoBehaviour
       transform.position = Vector3.MoveTowards(transform.position,
         waypoints[wayPointIndex].position,
         moveSpeed * Time.deltaTime);
-
-      this.healthbar.transform.position = transform.position;
 
       if (Vector3.Distance(transform.position, waypoints[wayPointIndex].position) < 0.001f)
       {
