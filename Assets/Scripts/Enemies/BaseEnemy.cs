@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BaseEnemy : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class BaseEnemy : MonoBehaviour
     this.attackTimeout = attackTimeout;
     this.attackDamage = attackDamage;
     this.health = health;
+    this.maxHealth = health;
     this.armor = armor;
 
     gridController = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<GridController>();
@@ -87,5 +89,12 @@ public class BaseEnemy : MonoBehaviour
     animator.SetTrigger("playHit");
 
     farmManager.TakeDamage((int)attackDamage);
+  }
+
+  public void TakeDamage(float damage)
+  {
+    health -= damage;
+
+    healthbar.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().fillAmount = health / maxHealth;
   }
 }

@@ -32,8 +32,7 @@ public class BaseTower
     GameObject closestEnemy = getClosestEnemy(enemies, towerGameObject);
     if (closestEnemy != null)
     {
-      closestEnemy.GetComponent<BaseEnemy>().health -= this.Damage;
-      Debug.Log("Health:" + closestEnemy.GetComponent<BaseEnemy>().health);
+      closestEnemy.GetComponent<BaseEnemy>().TakeDamage(this.Damage);
       return true;
     }
     return false;
@@ -48,7 +47,6 @@ public class BaseTower
     {
       Vector3 diff = enemy.transform.position - position;
       float distance = diff.sqrMagnitude;
-      Debug.Log("distance: " + distance);
       if (distance < closestDistance && distance <= this.Range)
       {
         closestDistance = distance;

@@ -15,8 +15,8 @@ public class GridController : MonoBehaviour {
 
     foreach (Button gridCell in gridCellGameObjects) {
       gridCell.onClick.AddListener(() => {
-        GridCellObject currentGridCellObject = GetGridCellObject(currentGridCell);
         currentGridCell = gridCell.gameObject;
+        GridCellObject currentGridCellObject = GetGridCellObject(currentGridCell);
         if(currentGridCellObject.IsOccupied) {
           return;
         }

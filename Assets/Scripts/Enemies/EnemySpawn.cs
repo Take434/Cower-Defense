@@ -26,6 +26,7 @@ public class EnemySpawn : MonoBehaviour
             GameObject instance = Instantiate(enemyPrefab, transform.position, Quaternion.Euler(90, 0, 0));
             GameObject healthBar = Instantiate(this.healthBar, instance.transform.position, Quaternion.Euler(90, 0, 0));
             healthBar.transform.SetParent(instance.transform);
+            instance.GetComponent<BaseEnemy>().healthbar = healthBar;
 
             gridController.enemies.Add(instance);
             a += UnityEngine.Random.Range(10f, 15f);
