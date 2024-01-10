@@ -12,7 +12,6 @@ public class CameraController : MonoBehaviour
 
     private Vector3 lastShake = new Vector3(0, 0, 0);
     private Camera cam;
-    private float originalSize;
 
     [Range(0.0f, 5.0f)]
     [Tooltip("Set the target aspect ratio")]
@@ -22,7 +21,6 @@ public class CameraController : MonoBehaviour
     private void Awake() 
     {
         cam = GetComponent<Camera>();
-        originalSize = cam.orthographicSize;
 
         if(Application.isPlaying) {
             ScaleViewport();

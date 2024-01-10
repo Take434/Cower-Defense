@@ -8,7 +8,7 @@ public class FarmManager : MonoBehaviour
 {
     public int health = 250;
     public int maxHealth = 250;
-    public TextMeshProUGUI dispalyHealth;
+    public TextMeshProUGUI displayHealth;
     public Image healthBar;
     public AudioSource dmgSound;
 
@@ -37,7 +37,7 @@ public class FarmManager : MonoBehaviour
             dmgSound.Play();
             Camera.main.GetComponent<CameraController>().shake = 0.3f;
         }
-        dispalyHealth.text = health.ToString() + " / " + maxHealth.ToString();
+        displayHealth.text = health.ToString() + " / " + maxHealth.ToString();
         healthBar.sprite = healthStates[Mathf.Clamp(8 - Mathf.CeilToInt(health / step), 0, 8)];
     }
 }
