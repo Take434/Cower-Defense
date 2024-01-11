@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TowerSpawnController : MonoBehaviour {
   private GameObject currentGridCell;
+  private GridController gridController;
   public GameObject towerSelect;
   public GameObject chickenTowerPrefab;
   public GameObject CowTowerPrefab;
@@ -13,38 +15,46 @@ public class TowerSpawnController : MonoBehaviour {
   public GameObject scarecrowTowerPrefab;
 
   void Start() {
-    Button[] gridCells = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<GridController>().GridCells
+    gridController = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<GridController>();
+    Button[] gridCells = gridController.GridCells
       .Select(x => x.GridCell.GetComponent<Button>()).ToArray();
   }
 
-  public void SpawnTower(GameObject tower) {
-    currentGridCell = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<GridController>().currentGridCell;
+  public void SpawnTower(GameObject tower, BaseTower towerModel) {
+    currentGridCell = gridController.currentGridCell;
     if (currentGridCell != null) {
+      GridCellObject currentGridCellObject = gridController.GetGridCellObject(currentGridCell);
       GameObject newTower = Instantiate(tower, currentGridCell.transform.position, Quaternion.Euler(90, 0, 0));
+      currentGridCellObject.IsOccupied = true;
+      currentGridCellObject.Tower = towerModel;
       currentGridCell = null;
       towerSelect.SetActive(false);
     }
   }
 
   public void Cancel() {
+    Debug.Log("cancelled");
     currentGridCell = null;
     towerSelect.SetActive(false);
   }
 
   public void SpawnChickenTower() {
-    SpawnTower(chickenTowerPrefab);
+    ChickenTower tower = new ChickenTower();
+    SpawnTower(chickenTowerPrefab, tower);
   }
 
   public void SpawnCowTower() {
-    Cancel(); 
-    // SpawnTower(CowTowerPrefab);
+    CowTower tower = new CowTower();
+    SpawnTower(CowTowerPrefab, tower);
   }
 
   public void SpawnPigTower() {
-    SpawnTower(pigTowerPrefab);
+    PigTower tower = new PigTower();
+    SpawnTower(pigTowerPrefab, tower);
   }
 
   public void SpawnScarecrowTower() {
-    SpawnTower(scarecrowTowerPrefab);
+    ScarecrowTower tower = new ScarecrowTower();
+    SpawnTower(scarecrowTowerPrefab, tower);
   }
 }

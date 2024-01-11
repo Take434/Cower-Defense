@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BaseEnemy : MonoBehaviour
 {
@@ -9,8 +10,10 @@ public class BaseEnemy : MonoBehaviour
   private float moveSpeed;
   private float attackTimeout;
   private float attackDamage;
-  private float health;
+  private float maxHealth;
+  public float health;
   private float armor;
+  public GameObject healthbar;
 
   //internal
   private Transform[] waypoints = new Transform[15];
@@ -19,6 +22,7 @@ public class BaseEnemy : MonoBehaviour
   private bool isAttacking = false;
   private float nextAttack = 0f;
   private FarmManager farmManager;
+  private GridController gridController;
   private GameState gameState;
 
   public void Setup(float moveSpeed, float attackTimeout, float attackDamage, float health, float armor)
@@ -27,7 +31,10 @@ public class BaseEnemy : MonoBehaviour
     this.attackTimeout = attackTimeout;
     this.attackDamage = attackDamage;
     this.health = health;
+    this.maxHealth = health;
     this.armor = armor;
+
+    gridController = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<GridController>();
 
     gameState = GameObject.Find("GameState").GetComponent<GameState>();
 
@@ -48,6 +55,11 @@ public class BaseEnemy : MonoBehaviour
   {
     if(gameState.state == GameStateEnum.GAMEOVER || gameState.state == GameStateEnum.PAUSED) {
       return;
+    }
+
+    if(health <= 0) {
+      gridController.enemies.Remove(gameObject);
+      Destroy(gameObject);
     }
 
     if (isAttacking)
@@ -84,5 +96,12 @@ public class BaseEnemy : MonoBehaviour
     animator.SetTrigger("playHit");
 
     farmManager.TakeDamage((int)attackDamage);
+  }
+
+  public void TakeDamage(float damage)
+  {
+    health -= damage;
+
+    healthbar.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.GetComponent<Image>().fillAmount = health / maxHealth;
   }
 }

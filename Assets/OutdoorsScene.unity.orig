@@ -8009,12 +8009,10 @@ MonoBehaviour:
   towerSelect: {fileID: 1149220746}
   chickenTowerPrefab: {fileID: 7328598152108178253, guid: 141c985423102e344b0f274f7fdc2dcb,
     type: 3}
-  CowTowerPrefab: {fileID: 7956310588668443200, guid: 82ac1d6badf1ba24cbeabe8e81347aed,
-    type: 3}
-  pigTowerPrefab: {fileID: 4554327051519870222, guid: f3d431c35e698d640aa9010bae589637,
-    type: 3}
-  scarecrowTowerPrefab: {fileID: 6437788781089130754, guid: 7bb172d11ffc4054b9a96c2379179330,
-    type: 3}
+<<<<<<< HEAD
+  CowTowerPrefab: {fileID: 0}
+  pigTowerPrefab: {fileID: 0}
+  scarecrowTowerPrefab: {fileID: 0}
 --- !u!1 &1149524048
 GameObject:
   m_ObjectHideFlags: 0
@@ -8108,6 +8106,14 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1149524048}
   m_CullTransparentMesh: 1
+=======
+  CowTowerPrefab: {fileID: 7956310588668443200, guid: 82ac1d6badf1ba24cbeabe8e81347aed,
+    type: 3}
+  pigTowerPrefab: {fileID: 4554327051519870222, guid: f3d431c35e698d640aa9010bae589637,
+    type: 3}
+  scarecrowTowerPrefab: {fileID: 6437788781089130754, guid: 7bb172d11ffc4054b9a96c2379179330,
+    type: 3}
+>>>>>>> jonas
 --- !u!1001 &1178575209
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10192,6 +10198,44 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88adeca11636cf9438bbf3fe331f8afc, type: 3}
+<<<<<<< HEAD
+--- !u!1 &1460563164
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1460563165}
+  m_Layer: 5
+  m_Name: Handle Slide Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1460563165
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460563164}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1646776186}
+  m_Father: {fileID: 1689995659}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -20, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+=======
 --- !u!1001 &1454411350
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10296,42 +10340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1460563164
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1460563165}
-  m_Layer: 5
-  m_Name: Handle Slide Area
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1460563165
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1460563164}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1646776186}
-  m_Father: {fileID: 1689995659}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+>>>>>>> jonas
 --- !u!1001 &1461194124
 PrefabInstance:
   m_ObjectHideFlags: 0
