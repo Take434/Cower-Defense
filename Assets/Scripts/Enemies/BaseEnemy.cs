@@ -21,9 +21,9 @@ public class BaseEnemy : MonoBehaviour
   private int wayPointIndex = 0;
   private bool isAttacking = false;
   private float nextAttack = 0f;
-  private FarmManager farmManager;
+  // private FarmManager farmManager;
   private GridController gridController;
-  private GameState gameState;
+  // private GameState gameState;
 
   public void Setup(float moveSpeed, float attackTimeout, float attackDamage, float health, float armor)
   {
@@ -36,13 +36,14 @@ public class BaseEnemy : MonoBehaviour
 
     gridController = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<GridController>();
 
-    gameState = GameObject.Find("GameState").GetComponent<GameState>();
+    // gameState = GameObject.Find("GameState").GetComponent<GameState>();
 
-    farmManager = GameObject.Find("UI Canvas").GetComponent<FarmManager>();
+    // farmManager = GameObject.Find("UI Canvas").GetComponent<FarmManager>();
 
     for(int i = 0; i < waypoints.Length; i++)
     {
-        waypoints[i] = GameObject.Find("Waypoint (" + i + ")").transform;
+        waypoints[i] = GameObject.Find("Waypoint  (" + i + ")").transform;
+        Debug.Log(waypoints[i]);
     }
 
     if (waypoints.Length > 0)
@@ -53,9 +54,9 @@ public class BaseEnemy : MonoBehaviour
 
   protected void Update()
   {
-    if(gameState.state == GameStateEnum.GAMEOVER || gameState.state == GameStateEnum.PAUSED) {
-      return;
-    }
+    // if(gameState.state == GameStateEnum.GAMEOVER || gameState.state == GameStateEnum.PAUSED) {
+    //   return;
+    // }
 
     if(health <= 0) {
       gridController.enemies.Remove(gameObject);
@@ -95,7 +96,7 @@ public class BaseEnemy : MonoBehaviour
   private void Attack() {
     animator.SetTrigger("playHit");
 
-    farmManager.TakeDamage((int)attackDamage);
+    // farmManager.TakeDamage((int)attackDamage);
   }
 
   public void TakeDamage(float damage)

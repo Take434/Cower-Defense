@@ -13,18 +13,21 @@ public class TowerSpawnController : MonoBehaviour {
   public GameObject CowTowerPrefab;
   public GameObject pigTowerPrefab;
   public GameObject scarecrowTowerPrefab;
+  private GameObject closeMenuButton;
 
   void Start() {
     gridController = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<GridController>();
     Button[] gridCells = gridController.GridCells
       .Select(x => x.GridCell.GetComponent<Button>()).ToArray();
+    closeMenuButton = GameObject.Find("closeMenuButton");
+    closeMenuButton.GetComponent<Button>().onClick.AddListener(Cancel);
   }
 
   public void SpawnTower(GameObject tower, BaseTower towerModel) {
     currentGridCell = gridController.currentGridCell;
     if (currentGridCell != null) {
       GridCellObject currentGridCellObject = gridController.GetGridCellObject(currentGridCell);
-      GameObject newTower = Instantiate(tower, currentGridCell.transform.position, Quaternion.Euler(90, 0, 0));
+      Instantiate(tower, currentGridCell.transform.position, Quaternion.Euler(0, 0, 0));
       currentGridCellObject.IsOccupied = true;
       currentGridCellObject.Tower = towerModel;
       currentGridCell = null;
