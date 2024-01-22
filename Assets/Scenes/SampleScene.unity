@@ -66101,7 +66101,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c2ccc1bad8af4041abcc33b53cb2c32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intensity: 0
+  differenceOfGaussians: {fileID: 0}
+  gaussianKernelSize: 3
+  stdev: 0.45
+  stdevScale: 1.19
+  tau: 0.97
+  thresholding: 1
+  tanh: 0
+  phi: 3.5
+  threshold: 0
+  invert: 1
 --- !u!1 &525292326
 GameObject:
   m_ObjectHideFlags: 0
