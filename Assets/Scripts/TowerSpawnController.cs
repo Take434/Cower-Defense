@@ -14,6 +14,7 @@ public class TowerSpawnController : MonoBehaviour {
   public GameObject pigTowerPrefab;
   public GameObject scarecrowTowerPrefab;
   private GameObject closeMenuButton;
+  private EconomyController economyController;
 
   void Start() {
     gridController = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<GridController>();
@@ -21,18 +22,24 @@ public class TowerSpawnController : MonoBehaviour {
       .Select(x => x.GridCell.GetComponent<Button>()).ToArray();
     closeMenuButton = GameObject.Find("closeMenuButton");
     closeMenuButton.GetComponent<Button>().onClick.AddListener(Cancel);
+    economyController = GameObject.Find("Economy").GetComponent<EconomyController>();
   }
 
-  public void SpawnTower(GameObject tower, BaseTower towerModel) {
+  public bool SpawnTower(GameObject tower, BaseTower towerModel) {
     currentGridCell = gridController.currentGridCell;
     if (currentGridCell != null) {
+      if(!economyController.SpendMoney(towerModel.Cost)){
+        return false;
+      }
       GridCellObject currentGridCellObject = gridController.GetGridCellObject(currentGridCell);
       Instantiate(tower, currentGridCell.transform.position, Quaternion.Euler(0, 0, 0));
       currentGridCellObject.IsOccupied = true;
       currentGridCellObject.Tower = towerModel;
       currentGridCell = null;
       towerSelect.SetActive(false);
+      return true;
     }
+    return false;
   }
 
   public void Cancel() {
@@ -43,21 +50,33 @@ public class TowerSpawnController : MonoBehaviour {
 
   public void SpawnChickenTower() {
     ChickenTower tower = new ChickenTower();
-    SpawnTower(chickenTowerPrefab, tower);
+    bool result = SpawnTower(chickenTowerPrefab, tower);
+    if(result) {
+      economyController.totalEggsYield += tower.ResourceYield;
+    }
   }
 
   public void SpawnCowTower() {
     CowTower tower = new CowTower();
-    SpawnTower(CowTowerPrefab, tower);
+    bool result = SpawnTower(CowTowerPrefab, tower);
+    if(result) {
+      economyController.totalMilkYield += tower.ResourceYield;
+    }
   }
 
   public void SpawnPigTower() {
     PigTower tower = new PigTower();
-    SpawnTower(pigTowerPrefab, tower);
+    bool result = SpawnTower(pigTowerPrefab, tower);
+    if(result) {
+      economyController.totalPorkYield += tower.ResourceYield;
+    }
   }
 
   public void SpawnScarecrowTower() {
     ScarecrowTower tower = new ScarecrowTower();
-    SpawnTower(scarecrowTowerPrefab, tower);
+    bool result = SpawnTower(scarecrowTowerPrefab, tower);
+    if(result) {
+      economyController.totalWheatYield += tower.ResourceYield;
+    }
   }
 }
