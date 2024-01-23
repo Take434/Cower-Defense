@@ -5,7 +5,7 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class ScreenShake : MonoBehaviour
 {
-    public bool shakeEnabled = false;
+    public float shakeTime = 0f;
     private Material mat;
 
     void OnEnable() {
@@ -14,11 +14,11 @@ public class ScreenShake : MonoBehaviour
     }
 
     void OnRenderImage(RenderTexture source, RenderTexture destination) {
-        if(!shakeEnabled) {
+        if(shakeTime <= 0) {
             Graphics.Blit(source, destination);
             return;
         }
-
+        shakeTime -= Time.deltaTime;
         Graphics.Blit(source, destination, mat);
     }
 }

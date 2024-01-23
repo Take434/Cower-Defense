@@ -35,7 +35,7 @@ public class FarmManager : MonoBehaviour
 
         if(damage > 0) {
             dmgSound.Play();
-            Camera.main.GetComponent<CameraController>().shake = 0.3f;
+            Camera.main.GetComponent<ScreenShake>().shakeTime = 0.5f;
         }
         displayHealth.text = health.ToString() + " / " + maxHealth.ToString();
         healthBar.sprite = healthStates[Mathf.Clamp(8 - Mathf.CeilToInt(health / step), 0, 8)];
