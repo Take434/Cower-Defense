@@ -120,7 +120,7 @@ Shader "Hidden/DifferenceOfGaussians" {
                 if (_Invert)
                     D = 1 - D;
 
-                return D;
+                return D * tex2D(_MainTex, i.uv);
             }
             ENDCG
         }
