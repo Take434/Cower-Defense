@@ -1,22 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class EconomyController : MonoBehaviour
 {
-    private int totalPorkYield;
-    private int totalMilkYield;
-    private int totalEggsYield;
-    private int totalWheatYield;
+    public int totalPorkYield;
+    public int totalMilkYield;
+    public int totalEggsYield;
+    public int totalWheatYield;
     private int currentPorkYield;
     private int currentMilkYield;
     private int currentEggsYield;
     private int currentWheatYield;
     private int money;
+    public GameObject moneyText;
     // Start is called before the first frame update
     void Start()
     {
         money = 25;
+        moneyText.GetComponent<TextMeshProUGUI>().text = money.ToString() + " $";
     }
 
     // Update is called once per frame
@@ -29,20 +32,19 @@ public class EconomyController : MonoBehaviour
         return money;
     }
 
+    public bool SpendMoney(int amount) {
+        if(money >= amount) {
+            money -= amount;
+            moneyText.GetComponent<TextMeshProUGUI>().text = money.ToString() + " $";
+            return true;
+        }
+        return false;
+    }
+
     public void EndOfWave() {
         money += currentPorkYield;
         money += currentMilkYield;
         money += currentEggsYield;
         money += currentWheatYield;
-    }
-
-    public void CraftCake() {
-        if (currentMilkYield >= 5 && currentEggsYield >= 1 && currentWheatYield >= 1) {
-            currentPorkYield -= 1;
-            currentMilkYield -= 1;
-            currentEggsYield -= 1;
-            currentWheatYield -= 1;
-            money += 10;
-        }
     }
 }
