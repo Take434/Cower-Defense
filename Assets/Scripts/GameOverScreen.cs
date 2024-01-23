@@ -11,7 +11,7 @@ public class GameOverScreen : MonoBehaviour
 
     public void Restart()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("OutdoorsScene");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
     }
 
     public void Quit()
