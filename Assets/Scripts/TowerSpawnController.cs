@@ -20,7 +20,7 @@ public class TowerSpawnController : MonoBehaviour {
     gridController = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<GridController>();
     Button[] gridCells = gridController.GridCells
       .Select(x => x.GridCell.GetComponent<Button>()).ToArray();
-    closeMenuButton = GameObject.Find("closeMenuButton");
+    closeMenuButton = GameObject.Find("closeTowerSelectButton");
     closeMenuButton.GetComponent<Button>().onClick.AddListener(Cancel);
     economyController = GameObject.Find("Economy").GetComponent<EconomyController>();
   }

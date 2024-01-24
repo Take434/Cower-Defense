@@ -86,7 +86,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2438939613139434493}
   m_Layer: 0
-  m_Name: Healthbar
+  m_Name: healthbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -243,7 +243,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &285686940996663848
 MonoBehaviour:
