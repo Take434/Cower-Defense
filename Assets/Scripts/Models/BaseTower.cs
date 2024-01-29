@@ -11,10 +11,10 @@ public class BaseTower
   public int Cost { get; set; }
   public Resources Resource { get; set; }
   public int ResourceYield { get; set; }
-  public bool isAoe { get; set; }
   public int ResourceLevel { get; set; }
+  protected GameObject attackPrefab;
 
-  public BaseTower(int OffenseLevel, int ResourceLevel, int Damage, double AttackSpeed, double Range, int Cost, Resources Resource, int ResourceYield, bool isAoe)
+  public BaseTower(int OffenseLevel, int ResourceLevel, int Damage, double AttackSpeed, double Range, int Cost, Resources Resource, int ResourceYield)
   {
     this.OffenseLevel = OffenseLevel;
     this.ResourceLevel = ResourceLevel;
@@ -24,7 +24,6 @@ public class BaseTower
     this.Cost = Cost;
     this.Resource = Resource;
     this.ResourceYield = ResourceYield;
-    this.isAoe = isAoe;
   }
 
   public bool Attack(List<GameObject> enemies, GameObject towerGameObject)
@@ -32,6 +31,10 @@ public class BaseTower
     GameObject closestEnemy = getClosestEnemy(enemies, towerGameObject);
     if (closestEnemy != null)
     {
+      if(this.attackPrefab != null) {
+        GameObject attack = GameObject.Instantiate(this.attackPrefab, towerGameObject.transform.position, quaternion.identity);
+        attack.GetComponent<AttackScript>().target = closestEnemy.transform.position;
+      }
       closestEnemy.GetComponent<BaseEnemy>().TakeDamage(this.Damage);
       return true;
     }

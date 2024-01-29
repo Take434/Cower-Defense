@@ -71114,6 +71114,7 @@ MonoBehaviour:
   state: 1
   pauseButton: {fileID: 107860167}
   gameOverScreen: {fileID: 280293028}
+  Round: 1
 --- !u!4 &1190859221
 Transform:
   m_ObjectHideFlags: 0
