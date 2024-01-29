@@ -7,12 +7,12 @@ using UnityEngine.UI;
 public class BaseEnemy : MonoBehaviour
 {
   //stats
-  private float moveSpeed;
-  private float attackTimeout;
-  private float attackDamage;
+  public float moveSpeed;
+  public float attackTimeout;
+  public float attackDamage;
   private float maxHealth;
   public float health;
-  private float armor;
+  public float difficultyRating;
   public GameObject healthbar;
 
   //internal
@@ -25,14 +25,9 @@ public class BaseEnemy : MonoBehaviour
   private GridController gridController;
   private GameState gameState;
 
-  public void Setup(float moveSpeed, float attackTimeout, float attackDamage, float health, float armor)
+  public void Start()
   {
-    this.moveSpeed = moveSpeed;
-    this.attackTimeout = attackTimeout;
-    this.attackDamage = attackDamage;
-    this.health = health;
-    this.maxHealth = health;
-    this.armor = armor;
+    maxHealth = health;
 
     gridController = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<GridController>();
 
@@ -43,7 +38,6 @@ public class BaseEnemy : MonoBehaviour
     for(int i = 0; i < waypoints.Length; i++)
     {
         waypoints[i] = GameObject.Find("Waypoint  (" + i + ")").transform;
-        Debug.Log(waypoints[i]);
     }
 
     if (waypoints.Length > 0)

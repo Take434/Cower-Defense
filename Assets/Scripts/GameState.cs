@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Services.Analytics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,7 @@ public class GameState : MonoBehaviour
     public GameStateEnum state = GameStateEnum.PAUSED;
     public GameObject pauseButton;
     public GameOverScreen gameOverScreen;
+    public int Round = 1;
     private Image pauseButtonSprite;
     private Sprite[] pauseButtonStates;
 
@@ -45,5 +47,16 @@ public class GameState : MonoBehaviour
     {
         state = GameStateEnum.GAMEOVER;
         gameOverScreen.Open();
+    }
+
+    public void RoundFinished()
+    {
+        Round++;
+        Pause();
+    }
+
+    public void RoundStarted()
+    {
+        Unpause();
     }
 }
