@@ -19,10 +19,12 @@ public class GameState : MonoBehaviour
     public int Round = 1;
     private Image pauseButtonSprite;
     private Sprite[] pauseButtonStates;
+    private EconomyController economyController;
 
     public void Start() {
         pauseButtonSprite = pauseButton.GetComponent<Image>();
         pauseButtonStates = UnityEngine.Resources.LoadAll<Sprite>("Sprites/PauseButton/");
+        economyController = GameObject.Find("Economy").GetComponent<EconomyController>();
     }
 
     public void TogglePause() {
@@ -52,6 +54,8 @@ public class GameState : MonoBehaviour
     public void RoundFinished()
     {
         Round++;
+        economyController.EndOfWave();
+        economyController.ReloadMoneyText();
         Pause();
     }
 

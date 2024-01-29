@@ -3,27 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class EconomyController : MonoBehaviour
 {
-    public int totalPorkYield;
-    public int totalMilkYield;
-    public int totalEggsYield;
-    public int totalWheatYield;
-    private int currentPorkYield;
-    private int currentMilkYield;
-    private int currentEggsYield;
-    private int currentWheatYield;
+    public int PorkYield;
+    public int MilkYield;
+    public int EggsYield;
+    public int WheatYield;
     private int money;
     public GameObject moneyText;
     private Dictionary<Recipe, int> craftedRecipes = new Dictionary<Recipe, int>();
     private List<Recipe> recipes = new List<Recipe>();
+    public GameObject baseResourcesText;
+    public GameObject recipesText;
+    public GameObject incomeText;
+    private string recipesString;
+    private string incomeString;
     // Start is called before the first frame update
     void Start()
     {
         Setup();
-        money = 25;
+        money = 250;
         moneyText.GetComponent<TextMeshProUGUI>().text = money.ToString() + " $";
     }
 
@@ -47,14 +49,13 @@ public class EconomyController : MonoBehaviour
     }
 
     public void EndOfWave() {
-        money += currentPorkYield;
-        money += currentMilkYield;
-        money += currentEggsYield;
-        money += currentWheatYield;
-    }
-
-    public void CraftRecipe() {
-
+        money += PorkYield;
+        money += MilkYield;
+        money += EggsYield;
+        money += WheatYield;
+        foreach(KeyValuePair<Recipe, int> recipe in craftedRecipes) {
+            money += recipe.Key.income * recipe.Value;
+        }
     }
 
     public void Setup() {
@@ -78,58 +79,125 @@ public class EconomyController : MonoBehaviour
         Recipe Omelette = new Recipe("Omelette", new Dictionary<Resources, int> {
             {Resources.Eggs, 2}
         }, 5);
+        recipes.Add(Omelette);
 
         foreach(Recipe recipe in recipes) {
-            craftedRecipes.Add(recipe, 4);
+            craftedRecipes.Add(recipe, 0);
         }
-        Debug.Log(craftedRecipes.First(x => x.Key.name == "Cake").Value);
-        Craft(Cake);
-        Debug.Log(craftedRecipes.First(x => x.Key.name == "Cake").Value);
+        foreach(Recipe recipe in recipes) {
+            recipesString += "   " + recipe.name + " \n";
+            foreach (KeyValuePair<Resources, int> ingredient in recipe.ingredients)
+            {
+                recipesString += "<size=15>" + ingredient.Key.ToString() + ": " + ingredient.Value + "</size> ";
+            }
+            recipesString += "\n";
+        }
+
+
+        // Debug.Log(craftedRecipes.First(x => x.Key.name == "Cake").Value);
+        // Craft(Cake);
+        // Debug.Log(craftedRecipes.First(x => x.Key.name == "Cake").Value);
     }
 
-    public void Craft(Recipe recipe) {
-        int newPorkYield = currentPorkYield;
-        int newMilkYield = currentMilkYield;
-        int newEggsYield = currentEggsYield;
-        int newWheatYield = currentWheatYield;
+    public void ReloadMoneyText() {
+        moneyText.GetComponent<TextMeshProUGUI>().text = money.ToString() + " $";
+    }
+    
+    public void ReloadBaseResourceText() {
+        baseResourcesText.GetComponent<TextMeshProUGUI>().text =
+            "Pork: " + PorkYield + "\n \n" +
+            "Milk: " + MilkYield + "\n \n" +
+            "Eggs: " + EggsYield + "\n \n" +
+            "Wheat: " + WheatYield + "\n \n";
+
+        recipesText.GetComponent<TextMeshProUGUI>().text = recipesString;
+    }
+
+    private void SummonTheMajesticIncomeTextOOOOOHHHH() {
+        int totalIncome = 0;
+        incomeString = "";
+        incomeString += "Pork: " + PorkYield + " * 1 = " + PorkYield * 1 + "\n";
+        incomeString += "Milk: " + MilkYield + " * 1 = " + MilkYield * 1 + "\n";
+        incomeString += "Eggs: " + EggsYield + " * 1 = " + EggsYield * 1 + "\n";
+        incomeString += "Wheat: " + WheatYield + " * 1 = " + WheatYield * 1 + "\n";
+        foreach(KeyValuePair<Recipe, int> recipe in craftedRecipes) {
+            incomeString += recipe.Key.name + ": " + recipe.Value + " * " + recipe.Key.income + " = " + recipe.Value * recipe.Key.income + "\n";
+        }
+        totalIncome = PorkYield + MilkYield + EggsYield + WheatYield + craftedRecipes.Sum(x => x.Key.income * x.Value);
+        incomeString += "\n Total income: " + totalIncome;
+    }
+
+    public void ReloadIncomeText() {
+        SummonTheMajesticIncomeTextOOOOOHHHH();
+        incomeText.GetComponent<TextMeshProUGUI>().text = incomeString;
+    }
+
+    public void CraftCake() {
+        Debug.Log("Crafting cake");
+        Craft(recipes.First(x => x.name == "Cake"));
+    }
+
+    public void CraftBread() {
+        Debug.Log("Crafting bread");
+        Craft(recipes.First(x => x.name == "Bread"));
+    }
+
+    public void CraftCheese() {
+        Debug.Log("Crafting cheese");
+        Craft(recipes.First(x => x.name == "Cheese"));
+    }
+
+    public void CraftOmelette() {
+        Debug.Log("Crafting omelette");
+        Craft(recipes.First(x => x.name == "Omelette"));
+    }
+
+    private void Craft(Recipe recipe) {
+
+        int newPorkYield = PorkYield;
+        int newMilkYield = MilkYield;
+        int newEggsYield = EggsYield;
+        int newWheatYield = WheatYield;
 
         foreach(KeyValuePair<Resources, int> ingredient in recipe.ingredients) {
             if(ingredient.Key.ToString() == "Eggs") {
-                if(currentEggsYield < ingredient.Value) {
+                if(EggsYield < ingredient.Value) {
                     Debug.Log("Not enough eggs");
                     return;
                 }
                 newEggsYield -= ingredient.Value;
             }
             if(ingredient.Key.ToString() == "Milk") {
-                if(currentMilkYield < ingredient.Value) {
+                if(MilkYield < ingredient.Value) {
                     Debug.Log("Not enough milk");
                     return;
                 }
                 newMilkYield -= ingredient.Value;
             }
             if(ingredient.Key.ToString() == "Wheat") {
-                if(currentWheatYield < ingredient.Value) {
+                if(WheatYield < ingredient.Value) {
                     Debug.Log("Not enough wheat");
                     return;
                 }
                 newWheatYield -= ingredient.Value;
             }
             if(ingredient.Key.ToString() == "Pork") {
-                if(currentPorkYield < ingredient.Value) {
+                if(PorkYield < ingredient.Value) {
                     Debug.Log("Not enough pork");
                     return;
                 }
                 newPorkYield -= ingredient.Value;
             }
         }
-        currentPorkYield = newPorkYield;
-        currentMilkYield = newMilkYield;
-        currentEggsYield = newEggsYield;
-        currentWheatYield = newWheatYield;
-        KeyValuePair<Recipe, int> currentRecipe = craftedRecipes.First(x => x.Key.name == "Cake");
+        PorkYield = newPorkYield;
+        MilkYield = newMilkYield;
+        EggsYield = newEggsYield;
+        WheatYield = newWheatYield;
+        
+        KeyValuePair<Recipe, int> currentRecipe = craftedRecipes.First(x => x.Key.name == recipe.name);
         craftedRecipes.Remove(recipe);
         craftedRecipes.Add(currentRecipe.Key, currentRecipe.Value + 1);
-        money += recipe.income;
+        ReloadBaseResourceText();
+        ReloadIncomeText();
     }
 }
