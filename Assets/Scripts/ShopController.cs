@@ -37,8 +37,4 @@ public class OpenShop : MonoBehaviour
         }
     }
 
-    public void close()
-    {
-        shopMenu.SetActive(false);
-    }
 }

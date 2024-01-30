@@ -47,10 +47,10 @@
                 <ui:Label tabindex="-1" text="Milk: 0 * 1 = 0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="milkInfo" style="font-size: 16px; -unity-font-style: bold;" />
                 <ui:Label tabindex="-1" text="Eggs: 0 * 1 = 0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="eggsInfo" style="font-size: 16px; -unity-font-style: bold;" />
                 <ui:Label tabindex="-1" text="Wheat: 0 * 1 = 0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="wheatInfo" style="font-size: 16px; -unity-font-style: bold;" />
-                <ui:Label tabindex="-1" text="Cake: 0 * 1 = 0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="cakeInfo" style="font-size: 16px; -unity-font-style: bold;" />
-                <ui:Label tabindex="-1" text="Bread: 0 * 1 = 0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="breadInfo" style="font-size: 16px; -unity-font-style: bold;" />
-                <ui:Label tabindex="-1" text="Cheese: 0 * 1 = 0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="cheeseInfo" style="font-size: 16px; -unity-font-style: bold;" />
-                <ui:Label tabindex="-1" text="Omelette: 0 * 1 = 0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="omeletteInfo" style="font-size: 16px; -unity-font-style: bold;" />
+                <ui:Label tabindex="-1" text="Cake: 0 * 20 = 0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="cakeInfo" style="font-size: 16px; -unity-font-style: bold;" />
+                <ui:Label tabindex="-1" text="Bread: 0 * 10 = 0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="breadInfo" style="font-size: 16px; -unity-font-style: bold;" />
+                <ui:Label tabindex="-1" text="Cheese: 0 * 5 = 0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="cheeseInfo" style="font-size: 16px; -unity-font-style: bold;" />
+                <ui:Label tabindex="-1" text="Omelette: 0 * 5 = 0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="omeletteInfo" style="font-size: 16px; -unity-font-style: bold;" />
                 <ui:Label tabindex="-1" text="Total Income: 0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="totalIncome" style="font-size: 16px; -unity-font-style: bold; margin-top: 60px;" />
             </ui:VisualElement>
         </ui:VisualElement>
