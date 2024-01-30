@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/MarketSyle.uss?fileID=7433441132597879392&amp;guid=002a0e40e9c47ee429f070c84adb6537&amp;type=3#MarketSyle" />
+    <ui:VisualElement style="flex-grow: 1; align-items: center; justify-content: center;">
+        <ui:VisualElement style="flex-grow: 1; width: 75%; height: 75%; max-width: 75%; min-width: 75%; max-height: 75%; min-height: 75%; position: relative; background-image: url(&apos;project://database/Assets/UI/MarketMenu.png?fileID=2800000&amp;guid=36f892d78f8166d42a235705747620c4&amp;type=3#MarketMenu&apos;); flex-direction: row; align-items: center; padding-right: 4%; padding-left: 4%; padding-top: 4%; padding-bottom: 4%;">
+            <ui:ListView focusable="true" class="production" />
+            <ui:VisualElement class="crafting" />
+            <ui:VisualElement class="income" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
