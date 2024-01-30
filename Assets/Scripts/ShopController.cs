@@ -13,7 +13,6 @@ public class OpenShop : MonoBehaviour
     void Start()
     {
         economyController = GameObject.Find("Economy").GetComponent<EconomyController>();
-        closeMenuButton = GameObject.Find("closeMarketButton");
         closeMenuButton.GetComponent<Button>().onClick.AddListener(Cancel);
         if (shopMenu != null)
         {
@@ -33,6 +32,7 @@ public class OpenShop : MonoBehaviour
         if (shopMenu != null)
         {
             economyController.ReloadBaseResourceText();
+            economyController.ReloadIncomeText();
             shopMenu.SetActive(true);
         }
     }

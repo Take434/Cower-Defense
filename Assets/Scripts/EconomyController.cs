@@ -194,9 +194,16 @@ public class EconomyController : MonoBehaviour
         EggsYield = newEggsYield;
         WheatYield = newWheatYield;
         
-        KeyValuePair<Recipe, int> currentRecipe = craftedRecipes.First(x => x.Key.name == recipe.name);
-        craftedRecipes.Remove(recipe);
-        craftedRecipes.Add(currentRecipe.Key, currentRecipe.Value + 1);
+        craftedRecipes[recipe] += 1;
+        ReloadBaseResourceText();
+        ReloadIncomeText();
+    }
+
+    public void RemoveRecipe(Recipe recipe) {
+        if(craftedRecipes[recipe] <= 0) {
+            return;
+        }
+        craftedRecipes[recipe] -= 1;
         ReloadBaseResourceText();
         ReloadIncomeText();
     }
