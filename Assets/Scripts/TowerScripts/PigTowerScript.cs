@@ -6,12 +6,16 @@ public class PigTowerScript : MonoBehaviour
 {
   private List<GameObject> enemies;
   private double a;
-  private PigTower tower;
+  public BaseTower tower;
+
+  PigTowerScript()
+  {
+    tower = new PigTower();
+  }
   // Start is called before the first frame update
   void Start()
   {
     enemies = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<GridController>().enemies;
-    tower = new PigTower();
     a = tower.AttackSpeed;
   }
 

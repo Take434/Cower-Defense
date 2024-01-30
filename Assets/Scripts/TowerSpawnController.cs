@@ -15,6 +15,8 @@ public class TowerSpawnController : MonoBehaviour {
   public GameObject scarecrowTowerPrefab;
   private GameObject closeMenuButton;
   private EconomyController economyController;
+  private GameObject NewTower;
+  private GridCellObject currentGridCellObject;
 
   void Start() {
     gridController = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<GridController>();
@@ -31,10 +33,9 @@ public class TowerSpawnController : MonoBehaviour {
       if(!economyController.SpendMoney(towerModel.Cost)){
         return false;
       }
-      GridCellObject currentGridCellObject = gridController.GetGridCellObject(currentGridCell);
-      Instantiate(tower, currentGridCell.transform.position, Quaternion.Euler(0, 0, 0));
+      currentGridCellObject = gridController.GetGridCellObject(currentGridCell);
+      NewTower = Instantiate(tower, currentGridCell.transform.position, Quaternion.Euler(0, 0, 0));
       currentGridCellObject.IsOccupied = true;
-      currentGridCellObject.Tower = towerModel;
       currentGridCell = null;
       towerSelect.SetActive(false);
       return true;
@@ -52,6 +53,7 @@ public class TowerSpawnController : MonoBehaviour {
     ChickenTower tower = new ChickenTower();
     bool result = SpawnTower(chickenTowerPrefab, tower);
     if(result) {
+      currentGridCellObject.Tower = NewTower.GetComponent<ChickenTowerScript>().tower;
       economyController.EggsYield += tower.ResourceYield;
       economyController.ReloadBaseResourceText();
       economyController.ReloadIncomeText();
@@ -62,6 +64,7 @@ public class TowerSpawnController : MonoBehaviour {
     CowTower tower = new CowTower();
     bool result = SpawnTower(CowTowerPrefab, tower);
     if(result) {
+      currentGridCellObject.Tower = NewTower.GetComponent<CowTowerScript>().tower;
       economyController.MilkYield += tower.ResourceYield;
       economyController.ReloadBaseResourceText();
       economyController.ReloadIncomeText();
@@ -72,6 +75,7 @@ public class TowerSpawnController : MonoBehaviour {
     PigTower tower = new PigTower();
     bool result = SpawnTower(pigTowerPrefab, tower);
     if(result) {
+      currentGridCellObject.Tower = NewTower.GetComponent<PigTowerScript>().tower;
       economyController.PorkYield += tower.ResourceYield;
       economyController.ReloadBaseResourceText();
       economyController.ReloadIncomeText();
@@ -82,6 +86,7 @@ public class TowerSpawnController : MonoBehaviour {
     ScarecrowTower tower = new ScarecrowTower();
     bool result = SpawnTower(scarecrowTowerPrefab, tower);
     if(result) {
+      currentGridCellObject.Tower = NewTower.GetComponent<ScarecrowTowerScript>().tower;
       economyController.WheatYield += tower.ResourceYield;
       economyController.ReloadBaseResourceText();
       economyController.ReloadIncomeText();

@@ -25,7 +25,7 @@ public class EconomyController : MonoBehaviour
     void Start()
     {
         Setup();
-        money = 250;
+        money = 2500;
         moneyText.GetComponent<TextMeshProUGUI>().text = money.ToString() + " $";
     }
 

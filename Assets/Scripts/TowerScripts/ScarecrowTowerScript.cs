@@ -6,12 +6,16 @@ public class ScarecrowTowerScript : MonoBehaviour
 {
   private List<GameObject> enemies;
   private double a;
-  private ScarecrowTower tower;
+  public BaseTower tower;
+
+  ScarecrowTowerScript()
+  {
+    tower = new ScarecrowTower();
+  }
   // Start is called before the first frame update
   void Start()
   {
     enemies = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<GridController>().enemies;
-    tower = new ScarecrowTower();
     a = tower.AttackSpeed;
   }
 
