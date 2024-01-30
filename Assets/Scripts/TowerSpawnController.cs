@@ -52,7 +52,9 @@ public class TowerSpawnController : MonoBehaviour {
     ChickenTower tower = new ChickenTower();
     bool result = SpawnTower(chickenTowerPrefab, tower);
     if(result) {
-      economyController.totalEggsYield += tower.ResourceYield;
+      economyController.EggsYield += tower.ResourceYield;
+      economyController.ReloadBaseResourceText();
+      economyController.ReloadIncomeText();
     }
   }
 
@@ -60,7 +62,9 @@ public class TowerSpawnController : MonoBehaviour {
     CowTower tower = new CowTower();
     bool result = SpawnTower(CowTowerPrefab, tower);
     if(result) {
-      economyController.totalMilkYield += tower.ResourceYield;
+      economyController.MilkYield += tower.ResourceYield;
+      economyController.ReloadBaseResourceText();
+      economyController.ReloadIncomeText();
     }
   }
 
@@ -68,7 +72,9 @@ public class TowerSpawnController : MonoBehaviour {
     PigTower tower = new PigTower();
     bool result = SpawnTower(pigTowerPrefab, tower);
     if(result) {
-      economyController.totalPorkYield += tower.ResourceYield;
+      economyController.PorkYield += tower.ResourceYield;
+      economyController.ReloadBaseResourceText();
+      economyController.ReloadIncomeText();
     }
   }
 
@@ -76,7 +82,9 @@ public class TowerSpawnController : MonoBehaviour {
     ScarecrowTower tower = new ScarecrowTower();
     bool result = SpawnTower(scarecrowTowerPrefab, tower);
     if(result) {
-      economyController.totalWheatYield += tower.ResourceYield;
+      economyController.WheatYield += tower.ResourceYield;
+      economyController.ReloadBaseResourceText();
+      economyController.ReloadIncomeText();
     }
   }
 }
