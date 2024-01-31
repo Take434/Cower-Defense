@@ -124,5 +124,9 @@ MonoBehaviour:
   attackDamage: 2.5
   health: 20
   difficultyRating: 1
+  healthFactor: 0.1
+  speedFactor: 0.05
+  healthCapFactor: 3
+  speedCapFactor: 2
   healthbar: {fileID: 0}
   animator: {fileID: -2186810798348100730}

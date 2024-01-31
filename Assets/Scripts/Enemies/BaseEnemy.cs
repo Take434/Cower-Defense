@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class BaseEnemy : MonoBehaviour
@@ -13,6 +11,10 @@ public class BaseEnemy : MonoBehaviour
   private float maxHealth;
   public float health;
   public float difficultyRating;
+  public float healthFactor;
+  public float speedFactor;
+  public float healthCapFactor;
+  public float speedCapFactor;
   public GameObject healthbar;
 
   //internal
@@ -27,11 +29,15 @@ public class BaseEnemy : MonoBehaviour
 
   public void Start()
   {
+    gameState = GameObject.Find("GameState").GetComponent<GameState>();
+
+
+    health *= Mathf.Min(1 + (gameState.Round * healthFactor), healthCapFactor);
+    moveSpeed *= Mathf.Min(1 + (gameState.Round * speedFactor), speedCapFactor);
+
     maxHealth = health;
 
     gridController = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<GridController>();
-
-    gameState = GameObject.Find("GameState").GetComponent<GameState>();
 
     farmManager = GameObject.Find("UI Canvas").GetComponent<FarmManager>();
 

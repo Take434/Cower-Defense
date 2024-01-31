@@ -38,8 +38,7 @@ public class EnemySpawn : MonoBehaviour
         roundTime = 0;
         roundLength = RoundLength();
         difficultyModifier = DifficultyModifier();
-        currentSpawnPattern = new Vector2Int(UnityEngine.Random.Range(1, spawnPatterns.Length), 0);
-        Debug.Log("Spawn pattern: " + currentSpawnPattern.x + " " + currentSpawnPattern.y);
+        currentSpawnPattern = new Vector2Int(UnityEngine.Random.Range(0, spawnPatterns.Length), 0);
     }
 
     void Update()
@@ -55,7 +54,7 @@ public class EnemySpawn : MonoBehaviour
             roundTime = 0;
             roundLength = RoundLength();
             difficultyModifier = DifficultyModifier();
-            currentSpawnPattern = new Vector2Int(UnityEngine.Random.Range(1, spawnPatterns.Length), 0);
+            currentSpawnPattern = new Vector2Int(UnityEngine.Random.Range(0, spawnPatterns.Length), 0);
             Debug.Log("Spawn pattern: " + currentSpawnPattern.x + " " + currentSpawnPattern.y);
             return;
         }
@@ -86,7 +85,7 @@ public class EnemySpawn : MonoBehaviour
 
         while(difficultyLeft >= 1) 
         {
-            int difficulty = UnityEngine.Random.Range(1, difficultyLeft);
+            int difficulty = UnityEngine.Random.Range(0, difficultyLeft - 1) % possibleEnemies.Count + 1;
             difficultyLeft -= difficulty;
             enemiesToSpawn.Add(possibleEnemies[difficulty]);
         }
@@ -112,7 +111,7 @@ public class EnemySpawn : MonoBehaviour
     private int DifficultyModifier() 
     {
         //ceil(0.1 x^(0.8 ℯ)+3)
-        return (int)Mathf.Ceil(0.1f * Mathf.Pow(gameState.Round, 0.8f * 2.71828f) + 3);
+        return (int)Mathf.Ceil(0.1f * Mathf.Pow(gameState.Round, 0.8f * 2.71828f) + 3) * 2;
     }
 
     private float RoundLength()

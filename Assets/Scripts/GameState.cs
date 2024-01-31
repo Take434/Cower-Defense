@@ -17,6 +17,7 @@ public class GameState : MonoBehaviour
     public GameObject pauseButton;
     public GameOverScreen gameOverScreen;
     public int Round = 1;
+    public bool autoPlay = true;
     private Image pauseButtonSprite;
     private Sprite[] pauseButtonStates;
     private EconomyController economyController;
@@ -56,7 +57,11 @@ public class GameState : MonoBehaviour
         Round++;
         economyController.EndOfWave();
         economyController.ReloadMoneyText();
-        Pause();
+        
+        if (!autoPlay)
+        {
+            Pause();
+        }
     }
 
     public void RoundStarted()

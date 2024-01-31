@@ -23,12 +23,10 @@ public class Settings : MonoBehaviour
 
     public void OpenSettings() {
         gameObject.SetActive(true);
-        gameState.Pause();
     }
 
     public void CloseSettings() {
         gameObject.SetActive(false);
-        gameState.Unpause();
     }
 
     public void ZoomSliderChanged(float value) {
@@ -41,5 +39,9 @@ public class Settings : MonoBehaviour
 
     public void EndDragZoomSlider() {
         planeImage.color = planeColor;
+    }
+
+    public void ToggleAutoPause(bool value) {
+        gameState.autoPlay = value;
     }
 }
