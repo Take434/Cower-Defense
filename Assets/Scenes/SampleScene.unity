@@ -66796,7 +66796,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &408752582
 RectTransform:
   m_ObjectHideFlags: 0
@@ -84477,6 +84477,8 @@ MonoBehaviour:
   EggsValue: 3
   WheatValue: 2
   moneyText: {fileID: 1864616498}
+  socaialismMultiplier: 1.1
+  roundIncome: 10
   baseResourcesText: {fileID: 1383132350}
   recipesText: {fileID: 1923552900}
   incomeText: {fileID: 1013277622}

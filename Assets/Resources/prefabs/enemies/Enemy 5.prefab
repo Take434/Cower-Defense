@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -7192169873100657965}
   - component: {fileID: -4718853853373744446}
   m_Layer: 0
-  m_Name: Enemy 2
+  m_Name: Enemy 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_Sprite: {fileID: -714663447, guid: 238f7f64f9fa0d143a5768abe302634b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5549128, g: 0.59681654, b: 0.8113208, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -119,11 +119,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89b404ddae018c640b33967f034bf78f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2.8
+  moveSpeed: 3.5
   attackTimeout: 1.5
-  attackDamage: 15
-  health: 80
-  difficultyRating: 3
+  attackDamage: 30
+  health: 175
+  difficultyRating: 6
   healthFactor: 0.1
   speedFactor: 0.05
   healthCapFactor: 3

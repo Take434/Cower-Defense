@@ -18,6 +18,8 @@ public class EconomyController : MonoBehaviour
     public int WheatValue;
     private int money;
     public GameObject moneyText;
+    public float socaialismMultiplier;
+    public int roundIncome = 10;
     private Dictionary<Recipe, int> craftedRecipes = new Dictionary<Recipe, int>();
     private List<Recipe> recipes = new List<Recipe>();
     public GameObject baseResourcesText;
@@ -60,6 +62,8 @@ public class EconomyController : MonoBehaviour
         foreach(KeyValuePair<Recipe, int> recipe in craftedRecipes) {
             money += recipe.Key.income * recipe.Value;
         }
+        money += roundIncome;
+        roundIncome = (int)Mathf.Ceil(roundIncome * socaialismMultiplier);
     }
 
     public void Setup() {
