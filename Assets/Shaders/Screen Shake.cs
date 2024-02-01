@@ -5,11 +5,12 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class ScreenShake : MonoBehaviour
 {
+    public Shader screenShake;
     public float shakeTime = 0f;
     private Material mat;
 
     void OnEnable() {
-        mat = new Material(Shader.Find("Hidden/Screen Shake"));
+        mat = new Material(screenShake);
         mat.hideFlags = HideFlags.HideAndDontSave;
     }
 

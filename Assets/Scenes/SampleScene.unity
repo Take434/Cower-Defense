@@ -66092,7 +66092,6 @@ GameObject:
   - component: {fileID: 324124552}
   - component: {fileID: 324124551}
   - component: {fileID: 324124550}
-  - component: {fileID: 324124553}
   m_Layer: 5
   m_Name: ReturnToMenu
   m_TagString: Untagged
@@ -66213,18 +66212,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 324124548}
   m_CullTransparentMesh: 1
---- !u!114 &324124553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 324124548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f9dc0263ba289347827968167db2d16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &325915656 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1163027218212853197, guid: 88adeca11636cf9438bbf3fe331f8afc, type: 3}
@@ -67843,7 +67830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c2ccc1bad8af4041abcc33b53cb2c32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  differenceOfGaussians: {fileID: 0}
+  differenceOfGaussians: {fileID: 4800000, guid: a78cbff504e460a47a3a2a97f8419fa6, type: 3}
   gaussianKernelSize: 4
   stdev: 0.7
   stdevScale: 1.46
@@ -67865,6 +67852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba996ed520a10cf4da33c6c9ce1caba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  screenShake: {fileID: 4800000, guid: bce85a9d8468c2347b0b8db3a15e4199, type: 3}
   shakeTime: 0
 --- !u!1 &525292326
 GameObject:

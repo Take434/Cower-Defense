@@ -33,7 +33,7 @@ public class BWDiffuse : MonoBehaviour {
     private Material dogMat;
     
     void OnEnable() {
-        dogMat = new Material(Shader.Find("Hidden/DifferenceOfGaussians"));
+        dogMat = new Material(differenceOfGaussians);
         dogMat.hideFlags = HideFlags.HideAndDontSave;
     }
 
