@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 public class BaseTower
 {
   public int OffenseLevel { get; set; }
-  public int Damage { get; set; }
+  public float Damage { get; set; }
   public double AttackSpeed { get; set; }
   public double Range { get; set; }
   public int Cost { get; set; }
@@ -17,7 +18,7 @@ public class BaseTower
   public GameObject attackPrefab;
   public GameObject gameState;
 
-  public BaseTower(int OffenseLevel, int ResourceLevel, int Damage, double AttackSpeed, double Range, int Cost, Resources Resource, int ResourceYield)
+  public BaseTower(int OffenseLevel, int ResourceLevel, float Damage, double AttackSpeed, double Range, int Cost, Resources Resource, int ResourceYield)
   {
     this.OffenseLevel = OffenseLevel;
     this.ResourceLevel = ResourceLevel;
@@ -27,8 +28,8 @@ public class BaseTower
     this.Cost = Cost;
     this.Resource = Resource;
     this.ResourceYield = ResourceYield;
-    this.ResourceUpgradeCost = 25;
-    this.OffenseUpgradeCost = 25;
+    this.ResourceUpgradeCost = 15;
+    this.OffenseUpgradeCost = Cost / 5 * 3;
   }
 
   public bool Attack(List<GameObject> enemies, GameObject towerGameObject)
@@ -59,9 +60,8 @@ public class BaseTower
   }
 
   public string GetOffenseLevelUpPreview() {
-    return "Damage: " + this.Damage + " -> " + (this.Damage + 1) + "\n" +
-    "Attack speed: " + this.AttackSpeed + " -> " + (this.AttackSpeed - 0.1) + "\n" +
-    "Range: " + this.Range + " -> " + (this.Range + 0.1);
+    return "Damage: " + this.Damage + " -> " + (this.Damage * 1.2) + "\n" +
+    "Range: " + this.Range + " -> " + (this.Range * 1.2);
   }
 
   public string GetOffenseLevelUpCost() {
@@ -71,15 +71,14 @@ public class BaseTower
   public void UpgradeResourceLevel() {
     this.ResourceYield += 1;
     this.ResourceLevel += 1;
-    this.ResourceUpgradeCost += 25;
+    this.ResourceUpgradeCost += 5;
   }
 
   public void UpgradeOffenseLevel() {
-    this.Damage += 1;
-    this.AttackSpeed -= 0.1;
-    this.Range += 0.1;
+    this.Damage = this.Damage * 1.2f;
+    this.Range *= 1.15;
     this.OffenseLevel += 1;
-    this.OffenseUpgradeCost += 25;
+    this.OffenseUpgradeCost = (int)Mathf.Ceil(OffenseUpgradeCost * 1.25f);
   }
 
   private GameObject getClosestEnemy(List<GameObject> enemies, GameObject towerGameObject)

@@ -44,7 +44,6 @@ public class TowerSpawnController : MonoBehaviour {
   }
 
   public void Cancel() {
-    Debug.Log("cancelled");
     currentGridCell = null;
     towerSelect.SetActive(false);
   }

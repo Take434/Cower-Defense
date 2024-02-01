@@ -48,14 +48,13 @@ public class EnemySpawn : MonoBehaviour
             return;
         }
 
-        if (roundTime <= 0 && currentSpawnPattern.y >= spawnPatterns[currentSpawnPattern.x].Length && gridController.enemies.Count == 0)
+        if (currentSpawnPattern.y >= spawnPatterns[currentSpawnPattern.x].Length && gridController.enemies.Count == 0 && enemiesToSpawn.Count == 0)
         {
             gameState.RoundFinished();
             roundTime = 0;
             roundLength = RoundLength();
             difficultyModifier = DifficultyModifier();
             currentSpawnPattern = new Vector2Int(UnityEngine.Random.Range(0, spawnPatterns.Length), 0);
-            Debug.Log("Spawn pattern: " + currentSpawnPattern.x + " " + currentSpawnPattern.y);
             return;
         }
 
@@ -79,9 +78,7 @@ public class EnemySpawn : MonoBehaviour
 
     private void Spawn() 
     {
-        Debug.Log("Difficulty modifier: " + difficultyModifier);
         int difficultyLeft = (int)Mathf.Ceil(difficultyModifier * spawnPatterns[currentSpawnPattern.x][currentSpawnPattern.y]);
-        Debug.Log("Difficulty left: " + difficultyLeft);
 
         while(difficultyLeft >= 1) 
         {
@@ -99,8 +96,6 @@ public class EnemySpawn : MonoBehaviour
         }
 
         GameObject instance = Instantiate(enemyPrefab, transform.position, Quaternion.Euler(0, 0, 0));
-        // Vector3 oldPos = instance.transform.position;
-        // Vector3 pos = new Vector3(oldPos.x, oldPos.y + size / 2, oldPos.z);
         GameObject healthBar = Instantiate(this.healthBar, instance.transform.position, Quaternion.Euler(0, 0, 0));
         healthBar.transform.SetParent(instance.transform);
         instance.GetComponent<BaseEnemy>().healthbar = healthBar;
@@ -110,12 +105,11 @@ public class EnemySpawn : MonoBehaviour
 
     private int DifficultyModifier() 
     {
-        //ceil(0.1 x^(0.8 ℯ)+3)
-        return (int)Mathf.Ceil(0.1f * Mathf.Pow(gameState.Round, 0.8f * 2.71828f) + 3) * 2;
+        return (int)Mathf.Ceil(0.1f * Mathf.Pow(gameState.Round, 0.8f * 2.71828f) + 3);
     }
 
     private float RoundLength()
     {
-        return Mathf.Ceil(0.2f * Mathf.Pow(gameState.Round, 2) + 10);
+        return roundLength + 0.5f;
     }
 }

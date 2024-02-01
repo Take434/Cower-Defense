@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Services.Analytics;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,6 +19,7 @@ public class GameState : MonoBehaviour
     public GameOverScreen gameOverScreen;
     public int Round = 1;
     public bool autoPlay = true;
+    public TextMeshProUGUI roundCounter;
     private Image pauseButtonSprite;
     private Sprite[] pauseButtonStates;
     private EconomyController economyController;
@@ -55,6 +57,7 @@ public class GameState : MonoBehaviour
     public void RoundFinished()
     {
         Round++;
+        roundCounter.text = "Round " + Round.ToString();
         economyController.EndOfWave();
         economyController.ReloadMoneyText();
         

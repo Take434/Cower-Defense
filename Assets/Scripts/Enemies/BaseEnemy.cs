@@ -15,9 +15,10 @@ public class BaseEnemy : MonoBehaviour
   public float speedFactor;
   public float healthCapFactor;
   public float speedCapFactor;
-  public GameObject healthbar;
 
   //internal
+
+  public GameObject healthbar;
   private Transform[] waypoints = new Transform[15];
   [SerializeField] private Animator animator;
   private int wayPointIndex = 0;

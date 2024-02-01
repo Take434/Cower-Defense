@@ -10,9 +10,6 @@ public class TowerLevelUpController: MonoBehaviour {
     private BaseTower CurrentTower;
     public GameObject Economy;
     private EconomyController EconomyController;
-    void Start() {
-        Debug.Log("TowerLevelUpController started");
-    }
 
     public void Open(BaseTower tower) {
         EconomyController = Economy.GetComponent<EconomyController>();

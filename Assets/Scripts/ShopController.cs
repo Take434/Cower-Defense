@@ -22,13 +22,11 @@ public class OpenShop : MonoBehaviour
     }
 
     public void Cancel() {
-    Debug.Log("cancelled");
     shopMenu.SetActive(false);
   }
 
     public void open()
     {
-        Debug.Log("clicked");
         if (shopMenu != null)
         {
             economyController.ReloadBaseResourceText();

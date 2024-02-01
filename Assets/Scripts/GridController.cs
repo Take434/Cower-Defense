@@ -20,7 +20,6 @@ public class GridController : MonoBehaviour {
         currentGridCell = gridCell.gameObject;
         GridCellObject currentGridCellObject = GetGridCellObject(currentGridCell);
         if(currentGridCellObject.IsOccupied) {
-          Debug.Log(currentGridCellObject.Tower);
           towerLevelUpController.Open(currentGridCellObject.Tower);
           return;
         }

@@ -12,6 +12,10 @@ public class EconomyController : MonoBehaviour
     public int MilkYield;
     public int EggsYield;
     public int WheatYield;
+    public int PorkValue;
+    public int MilkValue;
+    public int EggsValue;
+    public int WheatValue;
     private int money;
     public GameObject moneyText;
     private Dictionary<Recipe, int> craftedRecipes = new Dictionary<Recipe, int>();
@@ -25,7 +29,7 @@ public class EconomyController : MonoBehaviour
     void Start()
     {
         Setup();
-        money = 2500;
+        money = 100;
         moneyText.GetComponent<TextMeshProUGUI>().text = money.ToString() + " $";
     }
 
@@ -49,10 +53,10 @@ public class EconomyController : MonoBehaviour
     }
 
     public void EndOfWave() {
-        money += PorkYield;
-        money += MilkYield;
-        money += EggsYield;
-        money += WheatYield;
+        money += PorkYield * PorkValue;
+        money += MilkYield * MilkValue;
+        money += EggsYield * EggsValue;
+        money += WheatYield * WheatValue;
         foreach(KeyValuePair<Recipe, int> recipe in craftedRecipes) {
             money += recipe.Key.income * recipe.Value;
         }
@@ -60,25 +64,25 @@ public class EconomyController : MonoBehaviour
 
     public void Setup() {
         Recipe Cake = new Recipe("Cake", new Dictionary<Resources, int> {
-            {Resources.Wheat, 2},
-            {Resources.Eggs, 2},
-            {Resources.Milk, 1}
-        }, 20);
+            {Resources.Wheat, 3},
+            {Resources.Eggs, 3},
+            {Resources.Milk, 2}
+        }, 60);
         recipes.Add(Cake);
 
         Recipe Bread = new Recipe("Bread", new Dictionary<Resources, int> {
             {Resources.Wheat, 3}
-        }, 10);
+        }, 15);
         recipes.Add(Bread);
 
         Recipe Cheese = new Recipe("Cheese", new Dictionary<Resources, int> {
             {Resources.Milk, 2}
-        }, 5);
+        }, 10);
         recipes.Add(Cheese);
 
         Recipe Omelette = new Recipe("Omelette", new Dictionary<Resources, int> {
             {Resources.Eggs, 2}
-        }, 5);
+        }, 20);
         recipes.Add(Omelette);
 
         foreach(Recipe recipe in recipes) {
@@ -92,11 +96,6 @@ public class EconomyController : MonoBehaviour
             }
             recipesString += "\n";
         }
-
-
-        // Debug.Log(craftedRecipes.First(x => x.Key.name == "Cake").Value);
-        // Craft(Cake);
-        // Debug.Log(craftedRecipes.First(x => x.Key.name == "Cake").Value);
     }
 
     public void ReloadMoneyText() {
@@ -116,14 +115,14 @@ public class EconomyController : MonoBehaviour
     private void SummonTheMajesticIncomeTextOOOOOHHHH() {
         int totalIncome = 0;
         incomeString = "";
-        incomeString += "Pork: " + PorkYield + " * 1 = " + PorkYield * 1 + "\n";
-        incomeString += "Milk: " + MilkYield + " * 1 = " + MilkYield * 1 + "\n";
-        incomeString += "Eggs: " + EggsYield + " * 1 = " + EggsYield * 1 + "\n";
-        incomeString += "Wheat: " + WheatYield + " * 1 = " + WheatYield * 1 + "\n";
+        incomeString += "Pork: " + PorkYield + " * " + PorkValue + " = " + PorkYield * PorkValue + "\n";
+        incomeString += "Milk: " + MilkYield + " * " + MilkValue + " = " + MilkYield * MilkValue + "\n";
+        incomeString += "Eggs: " + EggsYield + " * " + EggsValue + " = " + EggsYield * EggsValue + "\n";
+        incomeString += "Wheat: " + WheatYield + " * " + WheatValue + " = " + WheatYield * WheatValue + "\n";
         foreach(KeyValuePair<Recipe, int> recipe in craftedRecipes) {
             incomeString += recipe.Key.name + ": " + recipe.Value + " * " + recipe.Key.income + " = " + recipe.Value * recipe.Key.income + "\n";
         }
-        totalIncome = PorkYield + MilkYield + EggsYield + WheatYield + craftedRecipes.Sum(x => x.Key.income * x.Value);
+        totalIncome = PorkYield * PorkValue + MilkYield * MilkValue + EggsYield * EggsValue + WheatYield * WheatValue + craftedRecipes.Sum(x => x.Key.income * x.Value);
         incomeString += "\n Total income: " + totalIncome;
     }
 
@@ -133,22 +132,18 @@ public class EconomyController : MonoBehaviour
     }
 
     public void CraftCake() {
-        Debug.Log("Crafting cake");
         Craft(recipes.First(x => x.name == "Cake"));
     }
 
     public void CraftBread() {
-        Debug.Log("Crafting bread");
         Craft(recipes.First(x => x.name == "Bread"));
     }
 
     public void CraftCheese() {
-        Debug.Log("Crafting cheese");
         Craft(recipes.First(x => x.name == "Cheese"));
     }
 
     public void CraftOmelette() {
-        Debug.Log("Crafting omelette");
         Craft(recipes.First(x => x.name == "Omelette"));
     }
 
@@ -162,28 +157,24 @@ public class EconomyController : MonoBehaviour
         foreach(KeyValuePair<Resources, int> ingredient in recipe.ingredients) {
             if(ingredient.Key.ToString() == "Eggs") {
                 if(EggsYield < ingredient.Value) {
-                    Debug.Log("Not enough eggs");
                     return;
                 }
                 newEggsYield -= ingredient.Value;
             }
             if(ingredient.Key.ToString() == "Milk") {
                 if(MilkYield < ingredient.Value) {
-                    Debug.Log("Not enough milk");
                     return;
                 }
                 newMilkYield -= ingredient.Value;
             }
             if(ingredient.Key.ToString() == "Wheat") {
                 if(WheatYield < ingredient.Value) {
-                    Debug.Log("Not enough wheat");
                     return;
                 }
                 newWheatYield -= ingredient.Value;
             }
             if(ingredient.Key.ToString() == "Pork") {
                 if(PorkYield < ingredient.Value) {
-                    Debug.Log("Not enough pork");
                     return;
                 }
                 newPorkYield -= ingredient.Value;
