@@ -14,7 +14,7 @@ public class BaseTower
   public int ResourceLevel { get; set; }
   public int ResourceUpgradeCost { get; set; }
   public int OffenseUpgradeCost { get; set; }
-  protected GameObject attackPrefab;
+  public GameObject attackPrefab;
 
   public BaseTower(int OffenseLevel, int ResourceLevel, int Damage, double AttackSpeed, double Range, int Cost, Resources Resource, int ResourceYield)
   {

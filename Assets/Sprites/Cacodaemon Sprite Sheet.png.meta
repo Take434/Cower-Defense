@@ -106,6 +106,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -113,7 +126,7 @@ TextureImporter:
       name: Cacodaemon Sprite Sheet_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 128
         y: 192
         width: 64
         height: 64
@@ -134,7 +147,7 @@ TextureImporter:
       name: Cacodaemon Sprite Sheet_1
       rect:
         serializedVersion: 2
-        x: 64
+        x: 192
         y: 192
         width: 64
         height: 64
@@ -155,7 +168,7 @@ TextureImporter:
       name: Cacodaemon Sprite Sheet_2
       rect:
         serializedVersion: 2
-        x: 128
+        x: 256
         y: 192
         width: 64
         height: 64
@@ -176,7 +189,7 @@ TextureImporter:
       name: Cacodaemon Sprite Sheet_3
       rect:
         serializedVersion: 2
-        x: 192
+        x: 320
         y: 192
         width: 64
         height: 64
@@ -197,7 +210,7 @@ TextureImporter:
       name: Cacodaemon Sprite Sheet_4
       rect:
         serializedVersion: 2
-        x: 256
+        x: 384
         y: 192
         width: 64
         height: 64
@@ -218,7 +231,7 @@ TextureImporter:
       name: Cacodaemon Sprite Sheet_5
       rect:
         serializedVersion: 2
-        x: 320
+        x: 448
         y: 192
         width: 64
         height: 64
@@ -239,7 +252,7 @@ TextureImporter:
       name: Cacodaemon Sprite Sheet_6
       rect:
         serializedVersion: 2
-        x: 0
+        x: 128
         y: 128
         width: 64
         height: 64
@@ -260,7 +273,7 @@ TextureImporter:
       name: Cacodaemon Sprite Sheet_7
       rect:
         serializedVersion: 2
-        x: 64
+        x: 192
         y: 128
         width: 64
         height: 64
@@ -281,7 +294,7 @@ TextureImporter:
       name: Cacodaemon Sprite Sheet_8
       rect:
         serializedVersion: 2
-        x: 128
+        x: 256
         y: 128
         width: 64
         height: 64
@@ -302,7 +315,7 @@ TextureImporter:
       name: Cacodaemon Sprite Sheet_9
       rect:
         serializedVersion: 2
-        x: 192
+        x: 320
         y: 128
         width: 64
         height: 64
@@ -323,7 +336,7 @@ TextureImporter:
       name: Cacodaemon Sprite Sheet_10
       rect:
         serializedVersion: 2
-        x: 256
+        x: 384
         y: 128
         width: 64
         height: 64
@@ -344,7 +357,7 @@ TextureImporter:
       name: Cacodaemon Sprite Sheet_11
       rect:
         serializedVersion: 2
-        x: 320
+        x: 448
         y: 128
         width: 64
         height: 64
@@ -365,7 +378,7 @@ TextureImporter:
       name: Cacodaemon Sprite Sheet_12
       rect:
         serializedVersion: 2
-        x: 0
+        x: 256
         y: 64
         width: 64
         height: 64
@@ -386,7 +399,7 @@ TextureImporter:
       name: Cacodaemon Sprite Sheet_13
       rect:
         serializedVersion: 2
-        x: 64
+        x: 320
         y: 64
         width: 64
         height: 64
@@ -407,7 +420,7 @@ TextureImporter:
       name: Cacodaemon Sprite Sheet_14
       rect:
         serializedVersion: 2
-        x: 128
+        x: 384
         y: 64
         width: 64
         height: 64
@@ -428,7 +441,7 @@ TextureImporter:
       name: Cacodaemon Sprite Sheet_15
       rect:
         serializedVersion: 2
-        x: 192
+        x: 448
         y: 64
         width: 64
         height: 64

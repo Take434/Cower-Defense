@@ -72378,7 +72378,7 @@ MonoBehaviour:
   pauseButton: {fileID: 107860167}
   gameOverScreen: {fileID: 280293028}
   Round: 1
-  autoPause: 1
+  autoPlay: 1
 --- !u!4 &1190859221
 Transform:
   m_ObjectHideFlags: 0
@@ -76254,7 +76254,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e9d6a727cf843914d88c946f50f158fa, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
