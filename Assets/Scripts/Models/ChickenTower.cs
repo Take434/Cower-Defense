@@ -1,9 +1,10 @@
+using Unity.VisualScripting;
+using UnityEngine;
+
 public class ChickenTower : BaseTower
 {
-
   public ChickenTower() : base(1, 1, 7, 1, 6, 17, Resources.Eggs, 1)
   {
-
   }
 
   public void LevelUpOffense()
@@ -12,9 +13,9 @@ public class ChickenTower : BaseTower
     this.Damage = this.Damage + this.OffenseLevel * 3;
   }
 
-  public void LevelUpRessource()
-  {
-    this.ResourceLevel++;
-    this.ResourceYield++;
-  }
+  // public void UpgradeResourceLevel()
+  // {
+  //   this.ResourceLevel++;
+  //   this.ResourceYield++;
+  // }
 }

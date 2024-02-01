@@ -6,12 +6,16 @@ public class CowTowerScript : MonoBehaviour
 {
   private List<GameObject> enemies;
   private double a;
-  private CowTower tower;
+  public BaseTower tower;
+
+  CowTowerScript()
+  {
+    tower = new CowTower();
+  }
   // Start is called before the first frame update
   void Start()
   {
     enemies = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<GridController>().enemies;
-    tower = new CowTower();
     a = tower.AttackSpeed;
   }
 

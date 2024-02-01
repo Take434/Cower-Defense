@@ -9,15 +9,19 @@ public class GridController : MonoBehaviour {
   public GameObject currentGridCell;
   public GameObject towerSelect;
   public List<GameObject> enemies;
+  public GameObject towerLevelUpMenu;
 
   void Start() {
     Button[] gridCellGameObjects = GameObject.FindGameObjectsWithTag("GridCell").Select(x => x.GetComponent<Button>()).ToArray();
+    TowerLevelUpController towerLevelUpController = towerLevelUpMenu.GetComponent<TowerLevelUpController>();
 
     foreach (Button gridCell in gridCellGameObjects) {
       gridCell.onClick.AddListener(() => {
         currentGridCell = gridCell.gameObject;
         GridCellObject currentGridCellObject = GetGridCellObject(currentGridCell);
         if(currentGridCellObject.IsOccupied) {
+          Debug.Log(currentGridCellObject.Tower);
+          towerLevelUpController.Open(currentGridCellObject.Tower);
           return;
         }
         towerSelect.SetActive(true);
