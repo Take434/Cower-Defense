@@ -17,6 +17,7 @@ public class ScarecrowTowerScript : MonoBehaviour
   {
     enemies = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<GridController>().enemies;
     a = tower.AttackSpeed;
+    tower.gameState = GameObject.Find("GameState");
   }
 
   // Update is called once per frame

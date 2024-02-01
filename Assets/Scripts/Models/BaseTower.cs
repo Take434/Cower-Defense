@@ -15,6 +15,7 @@ public class BaseTower
   public int ResourceUpgradeCost { get; set; }
   public int OffenseUpgradeCost { get; set; }
   public GameObject attackPrefab;
+  public GameObject gameState;
 
   public BaseTower(int OffenseLevel, int ResourceLevel, int Damage, double AttackSpeed, double Range, int Cost, Resources Resource, int ResourceYield)
   {
@@ -32,6 +33,10 @@ public class BaseTower
 
   public bool Attack(List<GameObject> enemies, GameObject towerGameObject)
   {
+    if(GameStateEnum.PLAYING != gameState.GetComponent<GameState>().state) {
+      return false;
+    }
+
     GameObject closestEnemy = getClosestEnemy(enemies, towerGameObject);
     if (closestEnemy != null)
     {

@@ -18,6 +18,7 @@ public class PigTowerScript : MonoBehaviour
     enemies = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<GridController>().enemies;
     a = tower.AttackSpeed;
     tower.attackPrefab = (GameObject)UnityEngine.Resources.Load("Prefabs/Fireball");
+    tower.gameState = GameObject.Find("GameState");
   }
 
   // Update is called once per frame
