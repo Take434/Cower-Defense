@@ -51,6 +51,8 @@ public class EnemySpawn : MonoBehaviour
         if (currentSpawnPattern.y >= spawnPatterns[currentSpawnPattern.x].Length && gridController.enemies.Count == 0 && enemiesToSpawn.Count == 0)
         {
             gameState.RoundFinished();
+            spawnOffset = Mathf.Min(0.5f, Mathf.Max(0.1f, 4f / gameState.Round));
+            Debug.Log(spawnOffset);
             roundTime = 0;
             roundLength = RoundLength();
             difficultyModifier = DifficultyModifier();
