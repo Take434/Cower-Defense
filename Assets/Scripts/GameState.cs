@@ -19,6 +19,7 @@ public class GameState : MonoBehaviour
     public GameOverScreen gameOverScreen;
     public int Round = 1;
     public bool autoPlay = true;
+    public float roundTime = 0;
     public TextMeshProUGUI roundCounter;
     private Image pauseButtonSprite;
     private Sprite[] pauseButtonStates;
@@ -28,6 +29,12 @@ public class GameState : MonoBehaviour
         pauseButtonSprite = pauseButton.GetComponent<Image>();
         pauseButtonStates = UnityEngine.Resources.LoadAll<Sprite>("Sprites/PauseButton/");
         economyController = GameObject.Find("Economy").GetComponent<EconomyController>();
+    }
+
+    public void Update() {
+        if(state == GameStateEnum.PLAYING) {
+            roundTime += Time.deltaTime;
+        }
     }
 
     public void TogglePause() {

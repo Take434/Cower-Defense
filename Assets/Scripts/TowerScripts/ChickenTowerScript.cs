@@ -7,6 +7,7 @@ public class ChickenTowerScript : MonoBehaviour
     private List<GameObject> enemies;
     private double a;
     public BaseTower tower;
+    private GameState gameState;
 
     ChickenTowerScript()
     {
@@ -15,21 +16,22 @@ public class ChickenTowerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameState = GameObject.Find("GameState").GetComponent<GameState>();
         enemies = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<GridController>().enemies;
-        a = tower.AttackSpeed;
+        a = gameState.roundTime;
         tower.gameState = GameObject.Find("GameState");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.time >= a)
+        if (gameState.roundTime >= a)
         {
             if (tower.Attack(enemies, gameObject))
             {
                 a += tower.AttackSpeed;
             }
-            a += 0.05;
+            a += Time.deltaTime;
         }
     }
 }
